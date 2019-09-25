@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import Toolbar from "../mails-toolbar";
 
 const MailsContainer = (props) => {
-  console.log({props})
   return (
-    <div>
+    <section>
+      <Toolbar />
       {props}
-    </div>
+    </section>
   )
 }
 
