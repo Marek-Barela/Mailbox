@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const SidebarNav = () => {
-  return (
-    <aside>
-      
-    </aside>
-  )
-}
+  return <aside></aside>;
+};
 
-export default SidebarNav
+export default SidebarNav;
