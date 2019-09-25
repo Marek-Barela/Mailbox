@@ -1,0 +1,9 @@
+.sidebarNav {
+  max-width: 200px;
+}
+
+.sidebarNavFolders {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}

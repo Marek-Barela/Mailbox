@@ -1,7 +1,9 @@
 import React from "react";
+import styles from "./index.module.css";
 
 const Header = () => {
-  return <header></header>;
+  const { header } = styles;
+  return <header className={header}>Mailbox</header>;
 };
 
 export default Header;

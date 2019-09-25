@@ -6,7 +6,9 @@ const App = () => {
   return (
     <div>
       <Header />
-      <SidebarNavigation />
+      <div>
+        <SidebarNavigation />
+      </div>
     </div>
   );
 };

@@ -1,7 +1,30 @@
 import React from "react";
+import SidebarItem from "../sidebar-navigation-item";
+import getMessageTypes from "../../selectors/getMessageTypes";
+import { connect } from "react-redux";
+import styles from "./index.module.css";
 
-const SidebarNav = () => {
-  return <aside></aside>;
+const SidebarNav = ({ typesOfMessages }) => {
+  const { sidebarNav, sidebarNavFolders } = styles;
+  return (
+    <aside>
+      <nav className={sidebarNav}>
+        <ul className={sidebarNavFolders}>
+          {typesOfMessages.baseTypesOfMessages.map((messageType, index) => {
+            return <SidebarItem key={index} typeOfMessage={messageType} />;
+          })}
+        </ul>
+        {/** TO-DO User custom folders navigation typesOfMessages.userTypesOfMessages Y*/}
+      </nav>
+    </aside>
+  );
 };
 
-export default SidebarNav;
+const mapStateToProps = state => ({
+  typesOfMessages: getMessageTypes(state)
+});
+
+export default connect(
+  mapStateToProps,
+  null
+)(SidebarNav);
