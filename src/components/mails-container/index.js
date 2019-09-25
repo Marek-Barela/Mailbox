@@ -1,4 +1,4 @@
-import React from "react";
+import React,{Fragment} from "react";
 import MailsWrapper from "../mails-wrapper";
 import { Route } from "react-router-dom";
 import getMessageTypes from "../../selectors/getMessageTypes";
@@ -16,13 +16,12 @@ const MailsContainer = ({ typesOfMessages, userMessages }) => {
   ];
 
   return (
-    <main>
+    <Fragment>
       {connectedTypesOfMessages.map((messageType, index) => {
         //Create additionals varables to set "exact" and root url "/" address properly
         const isRootUrl = messageType === "Inbox" ? true : false;
         const getPath = messageType === "Inbox" ? "/" : "/" + messageType;
         const filterMessages = userMessages.filter(message => {
-          //console.log({ message, messageType });
           return message.typeOfMessage === messageType.toLowerCase();
         });
         return (
@@ -30,11 +29,11 @@ const MailsContainer = ({ typesOfMessages, userMessages }) => {
             key={index}
             path={getPath}
             exact={isRootUrl}
-            component={() => MailsWrapper(filterMessages)}
+            component={() => MailsWrapper(filterMessages)} // Fill mail wrapper with specific type of message
           />
         );
       })}
-    </main>
+    </Fragment>
   );
 };
 

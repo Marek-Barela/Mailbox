@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 const App = ({ fetchUserData }) => {
   useEffect(() => {
     fetchUserData();
-  }, []);
+  }, [fetchUserData]);
 
   return (
     <Fragment>

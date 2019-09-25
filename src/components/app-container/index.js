@@ -3,7 +3,7 @@ import styles from "./index.module.css";
 
 const AppContainer = ({ children }) => {
   const { container } = styles;
-  return <div className={container}>{children}</div>;
+  return <main className={container}>{children}</main>;
 };
 
 export default AppContainer;
