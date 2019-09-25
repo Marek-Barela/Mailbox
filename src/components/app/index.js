@@ -1,14 +1,17 @@
 import React from "react";
 import Header from "../header";
+import AppContainer from "../app-container";
 import SidebarNavigation from "../sidebar-navigation";
+import MailsContainer from "../mails-container";
 
 const App = () => {
   return (
     <div>
       <Header />
-      <div>
+      <AppContainer>
         <SidebarNavigation />
-      </div>
+        <MailsContainer />
+      </AppContainer>
     </div>
   );
 };

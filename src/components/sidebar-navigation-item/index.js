@@ -4,9 +4,14 @@ import styles from "./index.module.css";
 
 const SidebarItem = ({typeOfMessage}) => {
   const { sidebarItem } = styles;
+  /**  
+   *  set url by typeOfMessage example:"Inbox, Notifications, Offers, Social..."
+   *  in case of "Index type" return "/" as url address
+  */
+  const setUrl = typeOfMessage === "Inbox" ? "/" : typeOfMessage.toLowerCase();
   return (
     <li className={sidebarItem}>
-      <NavLink to={typeOfMessage.toLowerCase()}>{typeOfMessage}</NavLink>
+      <NavLink to={setUrl}>{typeOfMessage}</NavLink>
     </li>
   );
 };

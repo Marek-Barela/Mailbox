@@ -14,7 +14,7 @@ const SidebarNav = ({ typesOfMessages }) => {
             return <SidebarItem key={index} typeOfMessage={messageType} />;
           })}
         </ul>
-        {/** TO-DO User custom folders navigation typesOfMessages.userTypesOfMessages Y*/}
+        {/** TO-DO User custom folders navigation typesOfMessages.userTypesOfMessages */}
       </nav>
     </aside>
   );
