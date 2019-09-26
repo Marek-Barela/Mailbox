@@ -24,7 +24,8 @@
 .checkbox,
 .favorite,
 .authorWrapper,
-.subjectWrapper {
+.subjectWrapper,
+.messageDate {
   display: flex;
   align-items: center;
 }
@@ -63,4 +64,13 @@
 
 .subjectWrapper p {
   font-size: 0.8em;
+}
+
+.messageDate {
+  width: 14%;
+}
+
+.messageDate p {
+  font-size: 0.8em;
+  margin: 0;
 }

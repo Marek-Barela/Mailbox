@@ -2,8 +2,9 @@ import React from 'react';
 import styles from "./index.module.css";
 
 const MailsListItem = message => {
-  const { author, subject, shortDescription, date } = message;
+  const { author, subject, shortDescription, date, readed } = message;
   const { listElement, checkbox, favorite, authorWrapper, subjectWrapper, messageDate } = styles;
+  const fontThickness = readed ? "400" : "800";
   return (
     <article className={listElement}>
       <div className={checkbox}>
@@ -13,14 +14,14 @@ const MailsListItem = message => {
         {/**ToDo icon */}
       </div>
       <div className={authorWrapper}>
-        <p>{author}</p>
+        <p style={{fontWeight: fontThickness}}>{author}</p>
       </div>
       <div className={subjectWrapper}>
-        <h6>{subject}</h6>
+        <h6 style={{fontWeight: fontThickness}}>{subject}</h6>
         <p>{shortDescription}</p>
       </div>
       <div className={messageDate}>
-        {date}
+        <p style={{fontWeight: fontThickness}}>{date}</p>
       </div>
     </article>
   )
