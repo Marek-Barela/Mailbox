@@ -6,6 +6,7 @@ import {
   switchMailCheckbox,
   switchFavoriteMessage
 } from "../../actions/mailsActions";
+import { convertDate } from "../../utils/convertDate";
 import { connect } from "react-redux";
 import styles from "./index.module.css";
 
@@ -76,7 +77,7 @@ const MailsListItem = ({
         <p>{shortDescription}</p>
       </div>
       <div className={messageDate}>
-        <p style={{ fontWeight: fontThickness }}>{date}</p>
+        <p style={{ fontWeight: fontThickness }}>{convertDate(date)}</p>
       </div>
     </article>
   );
