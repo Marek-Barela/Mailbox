@@ -20,6 +20,11 @@
   background-color: #b9534e;
 }
 
+.listElementActive:nth-child(n) {
+  background-color: #a80303;
+  color: #ffffff;
+}
+
 .checkbox,
 .favorite,
 .authorWrapper,
