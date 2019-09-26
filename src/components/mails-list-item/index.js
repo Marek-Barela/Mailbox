@@ -11,7 +11,7 @@ const MailsListItem = message => {
         <input type="checkbox" />
       </div>
       <div className={favorite}> 
-        {/**ToDo icon */}
+        {/**ToDo icon */}x
       </div>
       <div className={authorWrapper}>
         <p style={{fontWeight: fontThickness}}>{author}</p>

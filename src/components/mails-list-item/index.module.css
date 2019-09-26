@@ -1,6 +1,5 @@
 .listElement {
   font-size: 0.65em;
-  height: 60px;
   display: flex;
   align-items: center;
   padding: 10px 0;
@@ -57,7 +56,7 @@
 }
 
 .subjectWrapper h6 {
-  font-size: 1.1em;
+  font-size: 1em;
   font-weight: 800;
   margin-bottom: 5px;
 }
@@ -68,6 +67,7 @@
 
 .messageDate {
   width: 14%;
+  justify-content: center;
 }
 
 .messageDate p {
