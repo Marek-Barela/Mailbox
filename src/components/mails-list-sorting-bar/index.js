@@ -8,18 +8,17 @@ import styles from "./index.module.css";
 
 const ListSortingBar = ({ messages, switchAllMailsSelecting }) => {
   const { sortingBar, checkbox, favorite, author, subject, date } = styles;
-
   const checkIfAllMessagesAreSelected = messages.every(
     message => message.isChecked === true
   );
-
   const handleSwitchAllMessages = e => {
     switchAllMailsSelecting(e.target.checked, messages);
   };
+  const activeColor = checkIfAllMessagesAreSelected && "#a80303";
 
   return (
     <div className={sortingBar}>
-      <div className={checkbox}>
+      <div className={checkbox} style={{ borderBottomColor: activeColor }}>
         <input
           type="checkbox"
           checked={checkIfAllMessagesAreSelected}
