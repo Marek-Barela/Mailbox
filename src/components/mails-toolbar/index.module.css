@@ -3,17 +3,17 @@
   width: 100%;
   background-color: #f2f2f2;
   padding: 12px;
-  height: 54px;
+  height: 44px;
 }
 
 .button {
   border: none;
   background-color: transparent;
-  font-size: 0.6em;
+  font-size: 0.5em;
   text-transform: uppercase;
   font-weight: 800;
   letter-spacing: 2px;
-  padding: 6px 12px;
+  padding: 4px 8px;
   margin-left: 6px;
   cursor: pointer;
   outline: 0;
@@ -21,4 +21,9 @@
 
 .button:hover {
   background-color: rgba(0, 0, 0, 0.1);
+}
+
+.button svg {
+  font-size: 1.1em;
+  margin: 0 3px;
 }

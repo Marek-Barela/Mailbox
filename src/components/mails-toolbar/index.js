@@ -1,14 +1,30 @@
 import React from "react";
+import Icon from "../awesome-icon";
+import {
+  faTrashAlt,
+  faBan,
+  faCaretDown
+} from "@fortawesome/free-solid-svg-icons";
 import styles from "./index.module.css";
 
 const Toolbar = () => {
-  const { toolbar, ban, trash, button } = styles;
+  const { toolbar, button } = styles;
   return (
     <div className={toolbar}>
-      <button className={button}>spam</button>
-      <button className={button}>del</button>
-      <button className={button}>Move To</button>
-      <button className={button}>More</button>
+      <button className={button}>
+        <Icon icon={faBan} />
+      </button>
+      <button className={button}>
+        <Icon icon={faTrashAlt} />
+      </button>
+      <button className={button}>
+        Move To
+        <Icon icon={faCaretDown} />
+      </button>
+      <button className={button}>
+        More
+        <Icon icon={faCaretDown} />
+      </button>
     </div>
   );
 };

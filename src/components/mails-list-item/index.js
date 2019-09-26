@@ -1,4 +1,6 @@
 import React from 'react';
+import Icon from "../awesome-icon";
+import { faStar } from "@fortawesome/free-regular-svg-icons";
 import styles from "./index.module.css";
 
 const MailsListItem = message => {
@@ -11,7 +13,7 @@ const MailsListItem = message => {
         <input type="checkbox" />
       </div>
       <div className={favorite}> 
-        {/**ToDo icon */}x
+        <Icon icon={faStar} />
       </div>
       <div className={authorWrapper}>
         <p style={{fontWeight: fontThickness}}>{author}</p>

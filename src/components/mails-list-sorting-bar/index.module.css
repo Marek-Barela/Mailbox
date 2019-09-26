@@ -20,6 +20,12 @@
   cursor: pointer;
 }
 
+.author svg,
+.subject svg,
+.date svg {
+  margin-left: 5px;
+}
+
 .checkbox:hover,
 .favorite:hover,
 .author:hover,
