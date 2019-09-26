@@ -5,9 +5,9 @@ import { connect } from "react-redux";
 import styles from "./index.module.css";
 
 const SidebarNav = ({ typesOfMessages }) => {
-  const { sidebarNav, sidebarNavFolders } = styles;
+  const { sidebar, sidebarNav, sidebarNavFolders } = styles;
   return (
-    <aside>
+    <aside className={sidebar}>
       <nav className={sidebarNav}>
         <ul className={sidebarNavFolders}>
           {typesOfMessages.baseTypesOfMessages.map((messageType, index) => {
