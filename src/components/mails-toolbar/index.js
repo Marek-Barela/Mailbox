@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
+import styles from "./index.module.css";
 
 const Toolbar = () => {
-  return (
-    <div>
-      toolbar
-    </div>
-  )
-}
+  const { toolbar } = styles;
+  return <div className={toolbar}>toolbar</div>;
+};
 
-export default Toolbar
+export default Toolbar;
