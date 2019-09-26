@@ -5,10 +5,8 @@ import styles from "./index.module.css";
 
 const MailsContainer = props => {
   const { container } = styles;
-  const [messages, setMessages] = useState([]);
-  useEffect(() => {
-    setMessages(props);
-  }, [setMessages, props]);
+  const [messages, setMessages] = useState([...props]);
+  useEffect(() => {}, []);
 
   const switchCheckbox = (checked, id) => {
     let newArr = [...messages];

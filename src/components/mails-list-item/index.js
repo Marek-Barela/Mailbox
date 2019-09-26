@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Icon from "../awesome-icon";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as faStarFilled } from "@fortawesome/free-solid-svg-icons";
@@ -26,12 +26,9 @@ const MailsListItem = ({ message, switchCheckbox }) => {
   } = styles;
   const fontThickness = readed ? "400" : "800";
 
-  const [checkboxValue, setCheckboxValue] = useState(isChecked);
-
   const handleCheckboxChange = () => {
-    setCheckboxValue(!checkboxValue);
     // Change checkbox state in parent state
-    switchCheckbox(!checkboxValue, id);
+    switchCheckbox(!isChecked, id);
   };
 
   const mailClassName = `${listElement} ${isChecked ? listElementActive : ""}`;
@@ -41,9 +38,8 @@ const MailsListItem = ({ message, switchCheckbox }) => {
       <div className={checkbox}>
         <input
           type="checkbox"
-          value={checkboxValue}
-          checked={checkboxValue}
-          onClick={() => handleCheckboxChange()}
+          checked={isChecked}
+          onChange={() => handleCheckboxChange()}
         />
       </div>
       <div className={favorite}>
