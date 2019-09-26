@@ -15,7 +15,7 @@
   display: flex;
   align-items: center;
   margin: 0 3px;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 2px solid #e0e0e0;
   letter-spacing: 1px;
   cursor: pointer;
 }
@@ -31,7 +31,7 @@
 .author:hover,
 .subject:hover,
 .date:hover {
-  border-bottom: 1px solid #a80303;
+  border-bottom: 2px solid #a80303;
 }
 
 .checkbox,
