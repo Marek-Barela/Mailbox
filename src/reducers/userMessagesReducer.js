@@ -1,4 +1,8 @@
-import { FETCH_USER_DATA, SWITCH_SINGLE_MAIL_CHECKBOX } from "../actions/types";
+import {
+  FETCH_USER_DATA,
+  SWITCH_SINGLE_MAIL_CHECKBOX,
+  SWITCH_FAVORITE_MESSAGE
+} from "../actions/types";
 
 const initialState = {
   userMessages: []
@@ -20,7 +24,19 @@ export default (state = initialState, action) => {
       const findMessage = newState.userMessages.find(
         message => message.id === id
       );
-      findMessage.isChecked = isChecked;
+      findMessage.isChecked = !isChecked;
+      return {
+        ...state,
+        userMessages: newState.userMessages
+      };
+    }
+    case SWITCH_FAVORITE_MESSAGE: {
+      const { id, isFavorite } = payload;
+      const findMessage = newState.userMessages.find(
+        message => message.id === id
+      );
+
+      findMessage.isFavorite = !isFavorite;
       return {
         ...state,
         userMessages: newState.userMessages

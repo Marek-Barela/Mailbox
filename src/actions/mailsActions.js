@@ -1,4 +1,4 @@
-import { SWITCH_SINGLE_MAIL_CHECKBOX } from "./types";
+import { SWITCH_SINGLE_MAIL_CHECKBOX, SWITCH_FAVORITE_MESSAGE } from "./types";
 
 export const switchMailCheckbox = (isChecked, id) => {
   const payload = {
@@ -7,6 +7,18 @@ export const switchMailCheckbox = (isChecked, id) => {
   }
   return {
     type: SWITCH_SINGLE_MAIL_CHECKBOX,
+    payload
+  }
+}
+
+export const switchFavoriteMessage = (isFavorite, id) => {
+  const payload = {
+    id,
+    isFavorite
+  }
+  
+  return {
+    type: SWITCH_FAVORITE_MESSAGE,
     payload
   }
 }

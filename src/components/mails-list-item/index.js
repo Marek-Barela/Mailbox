@@ -2,11 +2,18 @@ import React from "react";
 import Icon from "../awesome-icon";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as faStarFilled } from "@fortawesome/free-solid-svg-icons";
-import { switchMailCheckbox } from "../../actions/mailsActions";
+import {
+  switchMailCheckbox,
+  switchFavoriteMessage
+} from "../../actions/mailsActions";
 import { connect } from "react-redux";
 import styles from "./index.module.css";
 
-const MailsListItem = ({ message, switchMailCheckbox }) => {
+const MailsListItem = ({
+  message,
+  switchMailCheckbox,
+  switchFavoriteMessage
+}) => {
   const {
     id,
     author,
@@ -29,8 +36,11 @@ const MailsListItem = ({ message, switchMailCheckbox }) => {
   const fontThickness = readed ? "400" : "800";
 
   const handleCheckboxChange = (isChecked, id) => {
-    // Change checkbox state in parent state
-    switchMailCheckbox(!isChecked, id);
+    switchMailCheckbox(isChecked, id);
+  };
+
+  const handleFavoriteChange = (isFavorite, id) => {
+    switchFavoriteMessage(isFavorite, id);
   };
 
   const mailClassName = `${listElement} ${isChecked ? listElementActive : ""}`;
@@ -46,9 +56,16 @@ const MailsListItem = ({ message, switchMailCheckbox }) => {
       </div>
       <div className={favorite}>
         {isFavorite ? (
-          <Icon icon={faStarFilled} style={{ color: "#FFBD1B" }} />
+          <Icon
+            icon={faStarFilled}
+            style={{ color: "#FFBD1B" }}
+            onClick={() => handleFavoriteChange(isFavorite, id)}
+          />
         ) : (
-          <Icon icon={faStar} />
+          <Icon
+            icon={faStar}
+            onClick={() => handleFavoriteChange(isFavorite, id)}
+          />
         )}
       </div>
       <div className={authorWrapper}>
@@ -66,7 +83,11 @@ const MailsListItem = ({ message, switchMailCheckbox }) => {
 };
 
 const mapDispatchToProps = {
-  switchMailCheckbox
-}
+  switchMailCheckbox,
+  switchFavoriteMessage
+};
 
-export default connect(null, mapDispatchToProps)(MailsListItem);
+export default connect(
+  null,
+  mapDispatchToProps
+)(MailsListItem);
