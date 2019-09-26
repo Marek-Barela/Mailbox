@@ -8,7 +8,7 @@ const MailsContainer = props => {
   const [messages = [], setMessages] = useState();
   useEffect(() => {
     setMessages(props);
-  }, [setMessages]);
+  }, [setMessages, props]);
 
   return (
     <section className={container}>
