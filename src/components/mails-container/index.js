@@ -29,7 +29,7 @@ const MailsContainer = ({ typesOfMessages, userMessages }) => {
             key={index}
             path={getPath}
             exact={isRootUrl}
-            component={() => MailsWrapper(filterMessages)} // Fill mail wrapper with specific type of message
+            component={() => <MailsWrapper listOfMails={filterMessages} />} // Fill mail wrapper with specific type of message
           />
         );
       })}
