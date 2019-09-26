@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import styles from "./index.module.css"
 
 const MailsListEmpty = () => {
+  const { emptyFolder } = styles;
   return (
-    <div>
-      List is empty
+    <div className={emptyFolder}>
+      This folder is empty
     </div>
   )
 }
