@@ -10,10 +10,19 @@ const MailsContainer = props => {
     setMessages(props);
   }, [setMessages, props]);
 
+  const switchCheckbox = (checked, id) => {
+    console.log({ checked, id });
+  };
+
+  const options = {
+    messages,
+    switchCheckbox
+  };
+
   return (
     <section className={container}>
-      <Toolbar messages={messages} />
-      <MailsListContainer messages={messages} />
+      <Toolbar {...options} />
+      <MailsListContainer {...options} />
     </section>
   );
 };
