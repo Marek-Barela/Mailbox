@@ -12,6 +12,10 @@
   padding-bottom: 8px;
 }
 
+.sidebarItem:nth-child(9) {
+  padding-top: 8px;
+}
+
 .sidebarItem a {
   font-size: 0.7em;
   display: flex;
