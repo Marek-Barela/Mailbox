@@ -1,7 +1,8 @@
 import {
   FETCH_USER_DATA,
   SWITCH_SINGLE_MAIL_CHECKBOX,
-  SWITCH_FAVORITE_MESSAGE
+  SWITCH_FAVORITE_MESSAGE,
+  SWITCH_ALL_MAILS_SELECTING
 } from "../actions/types";
 
 const initialState = {
@@ -41,6 +42,21 @@ export default (state = initialState, action) => {
         ...state,
         userMessages: newState.userMessages
       };
+    }
+    case SWITCH_ALL_MAILS_SELECTING: {
+      const { isChecked, messagesToSwitch } = payload;
+      const prevState = newState.userMessages;
+
+      messagesToSwitch.map(
+        message => message.isChecked = isChecked 
+      );
+
+      const arraysToObject = {...messagesToSwitch, ...prevState}
+      const objectToArray = Object.values(arraysToObject);
+      return {
+        ...state,
+        userMessages: objectToArray
+      }
     }
     default: {
       return {
