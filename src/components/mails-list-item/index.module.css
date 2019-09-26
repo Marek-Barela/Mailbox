@@ -27,6 +27,7 @@
 .messageDate {
   display: flex;
   align-items: center;
+  margin: 0 3px;
 }
 
 .checkbox {
@@ -67,7 +68,6 @@
 
 .messageDate {
   width: 14%;
-  justify-content: center;
 }
 
 .messageDate p {

@@ -1,15 +1,25 @@
-import React from 'react'
+import React from "react";
 import styles from "./index.module.css";
 
 const ListSortingBar = () => {
-  const { sortingBar } = styles;
+  const { sortingBar, checkbox, favorite, author, subject, date } = styles;
   return (
     <div className={sortingBar}>
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
+      <div className={checkbox}>
+        <input type="checkbox" />
+      </div>
+      <div className={favorite}>{/**ToDo icon */}x</div>
+      <div className={author}>
+        <span>Author</span>
+      </div>
+      <div className={subject}>
+        <span>Subject</span>
+      </div>
+      <div className={date}>
+        <span>Date</span>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default ListSortingBar
+export default ListSortingBar;

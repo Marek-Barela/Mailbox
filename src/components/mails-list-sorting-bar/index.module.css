@@ -1,6 +1,48 @@
 .sortingBar {
   width: 100%;
-  height: 28px;
   display: flex;
   align-items: center;
+  padding: 5px 0;
+  font-size: 0.65em;
+}
+
+.checkbox,
+.favorite,
+.author,
+.subject,
+.date {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin: 0 3px;
+  border-bottom: 1px solid #e0e0e0;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.checkbox:hover,
+.favorite:hover,
+.author:hover,
+.subject:hover,
+.date:hover {
+  border-bottom: 1px solid #a80303;
+}
+
+.checkbox,
+.favorite {
+  width: 3%;
+  justify-content: center;
+}
+
+.author {
+  width: 20%;
+}
+
+.subject {
+  width: 60%;
+}
+
+.date {
+  width: 14%;
+  text-align: center;
 }
