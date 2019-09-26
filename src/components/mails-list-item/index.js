@@ -2,9 +2,11 @@ import React from "react";
 import Icon from "../awesome-icon";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as faStarFilled } from "@fortawesome/free-solid-svg-icons";
+import { switchMailCheckbox } from "../../actions/mailsActions";
+import { connect } from "react-redux";
 import styles from "./index.module.css";
 
-const MailsListItem = ({ message, switchCheckbox }) => {
+const MailsListItem = ({ message, switchMailCheckbox }) => {
   const {
     id,
     author,
@@ -26,9 +28,9 @@ const MailsListItem = ({ message, switchCheckbox }) => {
   } = styles;
   const fontThickness = readed ? "400" : "800";
 
-  const handleCheckboxChange = () => {
+  const handleCheckboxChange = (isChecked, id) => {
     // Change checkbox state in parent state
-    switchCheckbox(!isChecked, id);
+    switchMailCheckbox(!isChecked, id);
   };
 
   const mailClassName = `${listElement} ${isChecked ? listElementActive : ""}`;
@@ -39,7 +41,7 @@ const MailsListItem = ({ message, switchCheckbox }) => {
         <input
           type="checkbox"
           checked={isChecked}
-          onChange={() => handleCheckboxChange()}
+          onChange={() => handleCheckboxChange(isChecked, id)}
         />
       </div>
       <div className={favorite}>
@@ -63,4 +65,8 @@ const MailsListItem = ({ message, switchCheckbox }) => {
   );
 };
 
-export default MailsListItem;
+const mapDispatchToProps = {
+  switchMailCheckbox
+}
+
+export default connect(null, mapDispatchToProps)(MailsListItem);
