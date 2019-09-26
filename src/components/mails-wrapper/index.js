@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Toolbar from "../mails-toolbar";
 import MailsListContainer from "../mails-list-container";
+import getSortingType from "../../selectors/getSortingType";
 import { connect } from "react-redux";
 import styles from "./index.module.css";
 
@@ -44,7 +45,7 @@ const MailsContainer = ({listOfMails, sortingType}) => {
 };
 
 const mapStateToProps = state => ({
-  sortingType: state.sorting.sortedBy
+  sortingType: getSortingType(state)
 })
 
 export default connect(mapStateToProps, null)(MailsContainer);
