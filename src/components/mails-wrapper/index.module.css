@@ -1,4 +1,15 @@
-.container {
+.containerWithMargin {
+  margin-left: 230px;
   width: 100%;
   padding-left: 10px;
+}
+
+.container {
+  margin-left: 0;
+}
+
+@media (max-width: 850px) {
+  .containerWithMargin {
+    margin-left: 0;
+  }
 }
