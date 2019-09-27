@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Toolbar from "../mails-toolbar";
 import MailsListContainer from "../mails-list-container";
-import getSortingType from "../../selectors/getSortingType";
+import {
+  getSortingType,
+  getSortingDirection
+} from "../../selectors/getSortingType";
 import { connect } from "react-redux";
 import styles from "./index.module.css";
 
-const MailsContainer = ({ listOfMails, sortingType }) => {
+const MailsContainer = ({ listOfMails, sortingType, sortingDirection }) => {
   const { container } = styles;
   const [messages, setMessages] = useState([]);
 
@@ -19,18 +22,18 @@ const MailsContainer = ({ listOfMails, sortingType }) => {
   };
 
   const compareMessagesBy = type => {
-    const fromNewToOld = false;
+    const fromNewToOld = sortingDirection;
     const key = type;
     if (fromNewToOld) {
       return function(a, b) {
-        if (a[key] < b[key]) return -1;
-        if (a[key] > b[key]) return 1;
+        if (a[key] > b[key]) return -1;
+        if (a[key] < b[key]) return 1;
         return 0;
       };
     } else {
       return function(a, b) {
-        if (a[key] > b[key]) return -1;
-        if (a[key] < b[key]) return 1;
+        if (a[key] < b[key]) return -1;
+        if (a[key] > b[key]) return 1;
         return 0;
       };
     }
@@ -45,7 +48,8 @@ const MailsContainer = ({ listOfMails, sortingType }) => {
 };
 
 const mapStateToProps = state => ({
-  sortingType: getSortingType(state)
+  sortingType: getSortingType(state),
+  sortingDirection: getSortingDirection(state)
 });
 
 export default connect(

@@ -1,7 +1,8 @@
-import { SORT_MAILS_BY_TYPE } from "../actions/types";
+import { SORT_MAILS_BY_TYPE, CHANGE_SORTING_DIRECTION } from "../actions/types";
 
 const initialState = {
-  sortedBy: "date"
+  sortedBy: "date",
+  fromNewestToOldest: true
 }
 
 export default (state = initialState, action) => {
@@ -12,6 +13,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         sortedBy: payload
+      }
+    }
+    case CHANGE_SORTING_DIRECTION: {
+      return {
+        ...state,
+        fromNewestToOldest: payload
       }
     }
     default: {

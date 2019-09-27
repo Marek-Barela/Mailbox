@@ -1,5 +1,7 @@
-const getSortingType = state => {
+export const getSortingType = state => {
   return state.sorting.sortedBy
 }
 
-export default getSortingType;
+export const getSortingDirection = state => {
+  return state.sorting.fromNewestToOldest
+}

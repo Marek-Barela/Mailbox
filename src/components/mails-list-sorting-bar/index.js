@@ -2,9 +2,13 @@ import React from "react";
 import Icon from "../awesome-icon";
 import {
   switchAllMailsSelecting,
-  sortMailsByType
+  sortMailsByType,
+  changeSortingDirection
 } from "../../actions/sortingBarActions";
-import getSortingType from "../../selectors/getSortingType";
+import {
+  getSortingType,
+  getSortingDirection
+} from "../../selectors/getSortingType";
 import { connect } from "react-redux";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { faSort } from "@fortawesome/free-solid-svg-icons";
@@ -14,7 +18,9 @@ const ListSortingBar = ({
   messages,
   switchAllMailsSelecting,
   sortMailsByType,
-  sortingType
+  sortingType,
+  sortingDirection,
+  changeSortingDirection
 }) => {
   const { sortingBar, checkbox, favorite, author, subject, date } = styles;
   const checkIfAllMessagesAreSelected = messages.every(
@@ -23,6 +29,17 @@ const ListSortingBar = ({
   const handleSwitchAllMessages = e => {
     switchAllMailsSelecting(e.target.checked, messages);
   };
+
+  const handleSortMailsClick = type => {
+    if (type === sortingType) {
+      sortMailsByType(type);
+      changeSortingDirection(!sortingDirection);
+    } else {
+      sortMailsByType(type);
+      changeSortingDirection(true);
+    }
+  };
+
   const activeCheckboxColor = checkIfAllMessagesAreSelected && "#860101";
   const activeSortingColor = type => sortingType === type && "#860101";
 
@@ -42,14 +59,14 @@ const ListSortingBar = ({
       <div
         className={favorite}
         style={{ borderBottomColor: activeSortingColor("isFavorite") }}
-        onClick={() => sortMailsByType("isFavorite")}
+        onClick={() => handleSortMailsClick("isFavorite")}
       >
         <Icon icon={faStar} />
       </div>
       <div
         className={author}
         style={{ borderBottomColor: activeSortingColor("author") }}
-        onClick={() => sortMailsByType("author")}
+        onClick={() => handleSortMailsClick("author")}
       >
         <span>Author</span>
         <Icon icon={faSort} />
@@ -57,7 +74,7 @@ const ListSortingBar = ({
       <div
         className={subject}
         style={{ borderBottomColor: activeSortingColor("subject") }}
-        onClick={() => sortMailsByType("subject")}
+        onClick={() => handleSortMailsClick("subject")}
       >
         <span>Subject</span>
         <Icon icon={faSort} />
@@ -65,7 +82,7 @@ const ListSortingBar = ({
       <div
         className={date}
         style={{ borderBottomColor: activeSortingColor("date") }}
-        onClick={() => sortMailsByType("date")}
+        onClick={() => handleSortMailsClick("date")}
       >
         <span>Date</span>
         <Icon icon={faSort} />
@@ -75,12 +92,14 @@ const ListSortingBar = ({
 };
 
 const mapStateToProps = state => ({
-  sortingType: getSortingType(state)
+  sortingType: getSortingType(state),
+  sortingDirection: getSortingDirection(state)
 });
 
 const mapDispatchToProps = {
   switchAllMailsSelecting,
-  sortMailsByType
+  sortMailsByType,
+  changeSortingDirection
 };
 
 export default connect(

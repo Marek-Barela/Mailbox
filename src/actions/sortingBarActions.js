@@ -1,4 +1,8 @@
-import { SWITCH_ALL_MAILS_SELECTING, SORT_MAILS_BY_TYPE } from "./types.js";
+import {
+  SWITCH_ALL_MAILS_SELECTING,
+  SORT_MAILS_BY_TYPE,
+  CHANGE_SORTING_DIRECTION
+} from "./types.js";
 
 export const switchAllMailsSelecting = (isChecked, messages) => {
   const payload = {
@@ -15,5 +19,12 @@ export const sortMailsByType = type => {
   return {
     type: SORT_MAILS_BY_TYPE,
     payload: type
+  };
+};
+
+export const changeSortingDirection = payload => {
+  return {
+    type: CHANGE_SORTING_DIRECTION,
+    payload
   };
 };
