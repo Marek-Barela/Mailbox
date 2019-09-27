@@ -13,6 +13,19 @@
   margin: 0;
 }
 
+.sidebarNavFolders:first-child li:nth-child(4) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 8px;
+}
+
+.sidebarNavFolders:first-child li:nth-child(5) {
+  padding-top: 8px;
+}
+
+.sidebarNavFolders:first-child li:nth-child(9) {
+  padding-top: 8px;
+}
+
 .folders {
   color: inherit;
   display: flex;
