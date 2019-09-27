@@ -1,5 +1,7 @@
-const getMessageTypes = state => {
-  return state.typesOfMessages;
+export const getMessageTypes = state => {
+  return state.navbarFolders;
 };
 
-export default getMessageTypes;
+export const getFolderInputBoolean = state => {
+  return state.navbarFolders.folderInputIsDisplayed
+}

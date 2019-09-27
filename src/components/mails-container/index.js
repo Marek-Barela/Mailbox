@@ -1,7 +1,7 @@
 import React,{Fragment} from "react";
 import MailsWrapper from "../mails-wrapper";
 import { Route } from "react-router-dom";
-import getMessageTypes from "../../selectors/getMessageTypes";
+import { getMessageTypes } from "../../selectors/getMessageTypes";
 import getUserMessages from "../../selectors/getUserMessages";
 import { connect } from "react-redux";
 

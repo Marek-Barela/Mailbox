@@ -1,0 +1,23 @@
+.inputWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  font-size: 0.55em;
+  width: 100%;
+  height: 36px;
+  padding: 5px 8px;
+  margin: 10px 4px;
+}
+
+.inputWrapper svg {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+.inputWrapper svg:hover {
+  color: #a80303;
+}

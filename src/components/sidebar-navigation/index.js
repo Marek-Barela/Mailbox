@@ -1,11 +1,18 @@
 import React from "react";
 import SidebarItem from "../sidebar-navigation-item";
-import getMessageTypes from "../../selectors/getMessageTypes";
+import SidebarNavigationInput from "../sidebar-navigation-input";
+import { switchCreateFolderInputVield } from "../../actions/navbarFoldersActions";
+import { getMessageTypes, getFolderInputBoolean } from "../../selectors/getMessageTypes";
 import { connect } from "react-redux";
 import styles from "./index.module.css";
 
-const SidebarNav = ({ typesOfMessages }) => {
+const SidebarNav = ({ typesOfMessages, isFolderInputActive, switchCreateFolderInputVield }) => {
   const { sidebar, sidebarNav, sidebarNavFolders, folders, folderText, folderButton } = styles;
+
+  const handleCreateFolderButton = () => {
+    switchCreateFolderInputVield(isFolderInputActive)
+  }
+
   return (
     <aside className={sidebar}>
       <nav className={sidebarNav}>
@@ -16,8 +23,15 @@ const SidebarNav = ({ typesOfMessages }) => {
         </ul>
         <div className={folders}>
           <span className={folderText}>Folders</span>
-          <span className={folderButton} title="Create new folder">+</span>
+          <span 
+            className={folderButton} 
+            title="Create new folder" 
+            onClick={() => handleCreateFolderButton()}
+          >
+            +
+          </span>
         </div>
+        {isFolderInputActive && <SidebarNavigationInput />}
         <ul className={sidebarNavFolders}>
           {typesOfMessages.userTypesOfMessages.map((messageType, index) => {
             return <SidebarItem key={index} typeOfMessage={messageType} />;
@@ -29,10 +43,15 @@ const SidebarNav = ({ typesOfMessages }) => {
 };
 
 const mapStateToProps = state => ({
-  typesOfMessages: getMessageTypes(state)
+  typesOfMessages: getMessageTypes(state),
+  isFolderInputActive: getFolderInputBoolean(state)
 });
+
+const mapDispatchToProps = {
+  switchCreateFolderInputVield
+}
 
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(SidebarNav);
