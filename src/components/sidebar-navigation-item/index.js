@@ -7,7 +7,7 @@ const SidebarItem = ({typeOfMessage}) => {
   const createDashesBetweenWords = typeOfMessage.trim().split(" ").join("-");
   const folderPath = createDashesBetweenWords;
   /**  
-   *  set url by typeOfMessage example:"Inbox, Notifications, Offers, Social..."
+   *  set url by folderPath example:"Inbox, Notifications, Social... => "/", "/notifications", "/social"
    *  in case of "Index type" return "/" as url address
   */
   const setUrl = folderPath === "Inbox" ? "/" : folderPath.toLowerCase();
