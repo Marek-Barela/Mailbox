@@ -40,7 +40,8 @@
 }
 
 .favorite {
-  width: 3%;
+  width: 5%;
+  padding-right: 8px;
   justify-content: center;
 }
 
@@ -50,7 +51,7 @@
 }
 
 .subjectWrapper {
-  width: 60%;
+  width: 58%;
   flex-direction: column;
   align-items: flex-start;
 }

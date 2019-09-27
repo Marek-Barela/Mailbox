@@ -19,7 +19,7 @@
   letter-spacing: 1px;
   cursor: pointer;
 }
-
+.favorite svg,
 .author svg,
 .subject svg,
 .date svg {
@@ -40,12 +40,17 @@
   justify-content: center;
 }
 
+.favorite {
+  width: 5%;
+  justify-content: center;
+}
+
 .author {
   width: 20%;
 }
 
 .subject {
-  width: 60%;
+  width: 58%;
 }
 
 .date {

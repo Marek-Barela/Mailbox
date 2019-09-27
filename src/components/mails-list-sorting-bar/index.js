@@ -11,7 +11,7 @@ import {
 } from "../../selectors/getSortingType";
 import { connect } from "react-redux";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
-import { faSort } from "@fortawesome/free-solid-svg-icons";
+import { faSortUp, faSortDown } from "@fortawesome/free-solid-svg-icons";
 import styles from "./index.module.css";
 
 const ListSortingBar = ({
@@ -62,6 +62,7 @@ const ListSortingBar = ({
         onClick={() => handleSortMailsClick("isFavorite")}
       >
         <Icon icon={faStar} />
+        {sortingDirection && sortingType === "isFavorite" ? <Icon icon={faSortDown} /> : <Icon icon={faSortUp}/>}
       </div>
       <div
         className={author}
@@ -69,7 +70,7 @@ const ListSortingBar = ({
         onClick={() => handleSortMailsClick("author")}
       >
         <span>Author</span>
-        <Icon icon={faSort} />
+        {sortingDirection && sortingType === "author" ? <Icon icon={faSortDown} /> : <Icon icon={faSortUp} />}
       </div>
       <div
         className={subject}
@@ -77,7 +78,7 @@ const ListSortingBar = ({
         onClick={() => handleSortMailsClick("subject")}
       >
         <span>Subject</span>
-        <Icon icon={faSort} />
+        {sortingDirection && sortingType === "subject" ? <Icon icon={faSortDown} /> : <Icon icon={faSortUp} /> }
       </div>
       <div
         className={date}
@@ -85,7 +86,7 @@ const ListSortingBar = ({
         onClick={() => handleSortMailsClick("date")}
       >
         <span>Date</span>
-        <Icon icon={faSort} />
+        {sortingDirection && sortingType === "date" ?  <Icon icon={faSortDown} /> : <Icon icon={faSortUp} /> }
       </div>
     </div>
   );
