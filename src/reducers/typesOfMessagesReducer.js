@@ -1,6 +1,6 @@
 const initialState = {
   baseTypesOfMessages: ["Inbox", "Notifications", "Offers", "Social", "Drafts", "Spam", "Trash", "Sent"],
-  userTypesOfMessages: ["Test user folder"]
+  userTypesOfMessages: ["   Test user folder    "]
 }
 
 export default (state = initialState, action) => {

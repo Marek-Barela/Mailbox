@@ -4,11 +4,13 @@ import styles from "./index.module.css";
 
 const SidebarItem = ({typeOfMessage}) => {
   const { sidebarItem, sidebarActive } = styles;
+  const createDashesBetweenWords = typeOfMessage.trim().split(" ").join("-");
+  const folderPath = createDashesBetweenWords;
   /**  
    *  set url by typeOfMessage example:"Inbox, Notifications, Offers, Social..."
    *  in case of "Index type" return "/" as url address
   */
-  const setUrl = typeOfMessage === "Inbox" ? "/" : typeOfMessage.toLowerCase();
+  const setUrl = folderPath === "Inbox" ? "/" : folderPath.toLowerCase();
   return (
     <li className={sidebarItem}>
       <NavLink exact activeClassName={sidebarActive} to={setUrl}>{typeOfMessage}</NavLink>
