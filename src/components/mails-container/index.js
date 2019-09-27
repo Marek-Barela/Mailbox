@@ -1,6 +1,7 @@
 import React,{Fragment} from "react";
 import MailsWrapper from "../mails-wrapper";
-import { Route } from "react-router-dom";
+import NotFound from "../404";
+import { Route, Switch } from "react-router-dom";
 import { getMessageTypes } from "../../selectors/getMessageTypes";
 import getUserMessages from "../../selectors/getUserMessages";
 import { connect } from "react-redux";
@@ -17,24 +18,27 @@ const MailsContainer = ({ typesOfMessages, userMessages }) => {
 
   return (
     <Fragment>
-      {connectedTypesOfMessages.map((messageType, index) => {
-        //Create additionals varables to set "exact" and root url "/" address properly
-        const createDashesBetweenWords = messageType.trim().split(" ").join("-");
-        messageType = createDashesBetweenWords;
-        const isRootUrl = messageType === "Inbox" ? true : false;
-        const getPath = messageType === "Inbox" ? "/" : "/" + messageType;
-        const filterMessages = userMessages.filter(message => {
-          return message.typeOfMessage === messageType.toLowerCase();
-        });
-        return (
-          <Route
-            key={index}
-            path={getPath}
-            exact={isRootUrl}
-            component={() => <MailsWrapper listOfMails={filterMessages} />} // Fill mail wrapper with specific type of message
-          />
-        );
-      })}
+      <Switch>
+        {connectedTypesOfMessages.map((messageType, index) => {
+          //Create additionals varables to set "exact" and root url "/" address properly
+          const createDashesBetweenWords = messageType.trim().split(" ").join("-");
+          messageType = createDashesBetweenWords;
+          const isRootUrl = messageType === "Inbox" ? true : false;
+          const getPath = messageType === "Inbox" ? "/" : "/" + messageType;
+          const filterMessages = userMessages.filter(message => {
+            return message.typeOfMessage === messageType.toLowerCase();
+          });
+          return (
+            <Route
+              key={index}
+              path={getPath}
+              exact={isRootUrl}
+              component={() => <MailsWrapper listOfMails={filterMessages} />} // Fill mail wrapper with specific type of message
+            />
+          );
+        })}
+        <Route component={() => <NotFound />} />
+      </Switch>
     </Fragment>
   );
 };

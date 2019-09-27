@@ -2,7 +2,7 @@ import { SWITCH_CREATE_FOLDER_INPUT_VIELD, CREATE_NEW_USER_FOLDER } from "../act
 
 const initialState = {
   baseTypesOfMessages: ["Inbox", "Notifications", "Offers", "Social", "Drafts", "Spam", "Trash", "Sent"],
-  userTypesOfMessages: ["Test user folder"],
+  userTypesOfMessages: ["Sample user folder"],
   folderInputIsDisplayed: false
 }
 
