@@ -185,6 +185,7 @@ button,
 input {
   /* 1 */
   overflow: visible;
+  outline: 0;
 }
 
 /**

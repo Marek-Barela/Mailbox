@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import styles from "./index.module.css";
 
 const SidebarNav = ({ typesOfMessages }) => {
-  const { sidebar, sidebarNav, sidebarNavFolders } = styles;
+  const { sidebar, sidebarNav, sidebarNavFolders, folders, folderText, folderButton } = styles;
   return (
     <aside className={sidebar}>
       <nav className={sidebarNav}>
@@ -14,7 +14,15 @@ const SidebarNav = ({ typesOfMessages }) => {
             return <SidebarItem key={index} typeOfMessage={messageType} />;
           })}
         </ul>
-        {/** TO-DO User custom folders navigation typesOfMessages.userTypesOfMessages */}
+        <div className={folders}>
+          <span className={folderText}>Folders</span>
+          <span className={folderButton} title="Create new folder">+</span>
+        </div>
+        <ul className={sidebarNavFolders}>
+          {typesOfMessages.userTypesOfMessages.map((messageType, index) => {
+            return <SidebarItem key={index} typeOfMessage={messageType} />;
+          })}
+        </ul>
       </nav>
     </aside>
   );

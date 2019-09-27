@@ -7,3 +7,35 @@
   padding: 0;
   margin: 0;
 }
+
+.folders {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.7em;
+  padding: 10px 6px;
+}
+
+.folderText {
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.folderButton {
+  font-size: 3em;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #aaaaaa;
+  border-radius: 100%;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.folderButton:hover {
+  background-color: #333333;
+  color: #ffffff;
+}
