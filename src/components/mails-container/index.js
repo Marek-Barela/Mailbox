@@ -19,6 +19,8 @@ const MailsContainer = ({ typesOfMessages, userMessages }) => {
     <Fragment>
       {connectedTypesOfMessages.map((messageType, index) => {
         //Create additionals varables to set "exact" and root url "/" address properly
+        const createDashesBetweenWords = messageType.trim().split(" ").join("-");
+        messageType = createDashesBetweenWords;
         const isRootUrl = messageType === "Inbox" ? true : false;
         const getPath = messageType === "Inbox" ? "/" : "/" + messageType;
         const filterMessages = userMessages.filter(message => {
