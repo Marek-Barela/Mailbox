@@ -9,7 +9,7 @@ const SidebarNavigationInput = () => {
   const [ inputValue, setInputValue ] = useState("")
 
   const handleInputChange = (e) => {
-
+    setInputValue(e.target.value)
   }
 
   return (
@@ -17,7 +17,7 @@ const SidebarNavigationInput = () => {
       <input 
         className={input} 
         placeholder="Folder name" 
-        onChange={() => handleInputChange()} 
+        onChange={(e) => handleInputChange(e)} 
         value={inputValue}
       />
       <Icon icon={faTimes} title="Cancel" />

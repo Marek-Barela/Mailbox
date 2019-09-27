@@ -1,5 +1,10 @@
 .sidebar {
-  width: 260px;
+  width: 300px;
+}
+
+.sidebarNav {
+  background-color: #f2f2f2;
+  padding: 2px 0;
 }
 
 .sidebarNavFolders {
@@ -9,6 +14,7 @@
 }
 
 .folders {
+  color: inherit;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,7 +34,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #aaaaaa;
+  color: inherit;
   border-radius: 100%;
   background-color: transparent;
   cursor: pointer;
