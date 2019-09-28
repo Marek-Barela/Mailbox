@@ -1,18 +1,15 @@
 import React from "react";
 import DropdownWrapper from "../mails-toolbar-dropdown-wrapper";
-import {
-  getBaseMessageTypes,
-  getUserMessageTypes
-} from "../../selectors/getMessageTypes";
+import { getBaseMessageTypes, getUserMessageTypes } from "../../selectors/getMessageTypes";
 import { changeMailsDirectoryToSpecificType } from "../../actions/toolbarActions";
 import createDashesBetweenWords from "../../utils/createDashesBetweenWords";
 import { connect } from "react-redux";
+import styles from './index.module.css';
 
 const MoveToDropdown = ({ baseMessageTypes, userMessageTypes, changeMailsDirectoryToSpecificType }) => {
+  const { button } = styles;
   const connectedTypesOfMessages = [...baseMessageTypes, ...userMessageTypes];
-
   const handleChangeDirectoryButton = type => changeMailsDirectoryToSpecificType(type);
-
   return (
     <DropdownWrapper>
       {connectedTypesOfMessages.map((typeOfMessage, index) => {
@@ -21,6 +18,7 @@ const MoveToDropdown = ({ baseMessageTypes, userMessageTypes, changeMailsDirecto
           <button
             key={index}
             onClick={() => handleChangeDirectoryButton(convertedTypeOfMessage)}
+            className={button}
           >
             {typeOfMessage}
           </button>
