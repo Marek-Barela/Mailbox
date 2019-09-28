@@ -47,23 +47,3 @@
   font-weight: bold;
   letter-spacing: 2px;
 }
-
-.folderButton {
-  font-size: 3em;
-  height: 38px;
-  width: 38px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: inherit;
-  border-radius: 100%;
-  background-color: transparent;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
-  user-select: none;
-}
-
-.folderButton:hover {
-  background-color: #333333;
-  color: #ffffff;
-}

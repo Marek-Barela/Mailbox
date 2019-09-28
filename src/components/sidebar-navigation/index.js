@@ -1,7 +1,6 @@
 import React from "react";
 import SidebarItem from "../sidebar-navigation-item";
 import SidebarNavigationInput from "../sidebar-navigation-input";
-import { switchCreateFolderInputVield } from "../../actions/navbarFoldersActions";
 import {
   getMessageTypes,
   getFolderInputBoolean
@@ -13,7 +12,6 @@ import styles from "./index.module.css";
 const SidebarNav = ({
   typesOfMessages,
   isFolderInputActive,
-  switchCreateFolderInputVield,
   sidebarIsVisible
 }) => {
   const {
@@ -22,13 +20,8 @@ const SidebarNav = ({
     sidebarNav,
     sidebarNavFolders,
     folders,
-    folderText,
-    folderButton
+    folderText
   } = styles;
-
-  const handleCreateFolderButton = () => {
-    switchCreateFolderInputVield(isFolderInputActive);
-  };
 
   const sidebarStyling = `${sidebar} ${sidebarIsVisible ? "" : sidebarHidden}`;
 
@@ -42,13 +35,6 @@ const SidebarNav = ({
         </ul>
         <div className={folders}>
           <span className={folderText}>Folders</span>
-          <span
-            className={folderButton}
-            title="Create new folder"
-            onClick={() => handleCreateFolderButton()}
-          >
-            +
-          </span>
         </div>
         {isFolderInputActive && <SidebarNavigationInput />}
         <ul className={sidebarNavFolders}>
@@ -67,11 +53,7 @@ const mapStateToProps = state => ({
   sidebarIsVisible: getMenuState(state)
 });
 
-const mapDispatchToProps = {
-  switchCreateFolderInputVield
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(SidebarNav);

@@ -1,23 +1,12 @@
 import React, { useState } from "react";
 import Icon from "../awesome-icon";
-import {
-  getFolderInputBoolean,
-  getMessageTypes
-} from "../../selectors/getMessageTypes";
-import {
-  switchCreateFolderInputVield,
-  createNewUserFolder
-} from "../../actions/navbarFoldersActions";
+import { getMessageTypes } from "../../selectors/getMessageTypes";
+import { createNewUserFolder } from "../../actions/navbarFoldersActions";
 import { connect } from "react-redux";
-import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import styles from "./index.module.css";
 
-const SidebarNavigationInput = ({
-  isFolderInputActive,
-  switchCreateFolderInputVield,
-  createNewUserFolder,
-  messageTypes
-}) => {
+const SidebarNavigationInput = ({ createNewUserFolder, messageTypes }) => {
   const { inputFolderWrapper, inputWrapper, input, warning } = styles;
   const [inputValue, setInputValue] = useState("");
   const [inputWarning, setInputWarning] = useState(false);
@@ -68,14 +57,9 @@ const SidebarNavigationInput = ({
       setInputWarning(false);
       setWarningMessage("");
       createNewUserFolder(inputValue.trim());
-      switchCreateFolderInputVield(isFolderInputActive);
     } else {
       setInputWarning(true);
     }
-  };
-
-  const handleCancelClick = () => {
-    switchCreateFolderInputVield(isFolderInputActive);
   };
 
   const inputWarningStyle = inputWarning && "#ff0000";
@@ -86,25 +70,22 @@ const SidebarNavigationInput = ({
         {inputWarning && <span className={warning}>{warningMessage}</span>}
         <input
           className={input}
-          placeholder="Folder name"
+          placeholder="New folder name"
           value={inputValue}
           onChange={e => handleInputChange(e)}
           style={{ borderColor: inputWarningStyle }}
         />
       </div>
-      <Icon icon={faTimes} title="Cancel" onClick={() => handleCancelClick()} />
       <Icon icon={faCheck} title="Save" onClick={() => handleSaveClick()} />
     </div>
   );
 };
 
 const mapStateToProps = state => ({
-  isFolderInputActive: getFolderInputBoolean(state),
   messageTypes: getMessageTypes(state)
 });
 
 const mapDispatchToProps = {
-  switchCreateFolderInputVield,
   createNewUserFolder
 };
 
