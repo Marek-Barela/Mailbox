@@ -4,7 +4,8 @@ import {
   SWITCH_FAVORITE_MESSAGE,
   SWITCH_ALL_MAILS_SELECTING,
   CHANGE_MAILS_DIRECTORY_TO_SPECIFIC_TYPE,
-  SELECT_ALL_MAILS_IN_FOLDER
+  SELECT_ALL_MAILS_IN_FOLDER,
+  SELECT_UNREAD_MESSAGES_IN_FOLDER
 } from "../actions/types";
 
 const initialState = {
@@ -74,6 +75,20 @@ export default (state = initialState, action) => {
       messagesToSwitch.map(mail => mail.isChecked = true);
       const prevState = newState.userMessages;
 
+      const arraysToObject = {...messagesToSwitch, ...prevState}
+      const objectToArray = Object.values(arraysToObject);
+      return {
+        ...state,
+        userMessages: objectToArray
+      }
+    }
+    case SELECT_UNREAD_MESSAGES_IN_FOLDER: {
+      const messagesToSwitch = [...payload];
+      messagesToSwitch
+        .filter(mail => mail.readed === false)
+        .map(mail => mail.isChecked = true);
+      const prevState = newState.userMessages;
+      
       const arraysToObject = {...messagesToSwitch, ...prevState}
       const objectToArray = Object.values(arraysToObject);
       return {
