@@ -4,7 +4,7 @@ import ToolbarOverlay from "../mails-toolbar-overlay";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import styles from "./index.module.css";
 
-const MoreDropdown = ({ currentClass, buttonName, dropdownElement }) => {
+const MoreDropdown = ({ currentClass, buttonName, dropdownElement, isDisabled = false }) => {
   const { wrapper } = styles;
   const [switchDropdown, setSwitchDropdown] = useState(false);
 
@@ -27,6 +27,7 @@ const MoreDropdown = ({ currentClass, buttonName, dropdownElement }) => {
         <button
           className={currentClass}
           onClick={() => handleMoveToButtonClick()}
+          disabled={isDisabled}
         >
           {buttonName}
           <Icon icon={faCaretDown} />

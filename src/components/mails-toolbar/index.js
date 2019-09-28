@@ -41,6 +41,7 @@ const Toolbar = ({ messages, changeMailsDirectoryToSpecificType }) => {
         currentClass={button}
         buttonName="Move To"
         dropdownElement={<MoveToDropdown />}
+        isDisabled={!isAnyMailSelected}
       />
       <DisplayDropdownButton
         currentClass={button}
