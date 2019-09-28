@@ -3,7 +3,8 @@ import {
   SWITCH_SINGLE_MAIL_CHECKBOX,
   SWITCH_FAVORITE_MESSAGE,
   SWITCH_ALL_MAILS_SELECTING,
-  CHANGE_MAILS_DIRECTORY_TO_SPECIFIC_TYPE
+  CHANGE_MAILS_DIRECTORY_TO_SPECIFIC_TYPE,
+  SELECT_ALL_MAILS_IN_FOLDER
 } from "../actions/types";
 
 const initialState = {
@@ -66,6 +67,18 @@ export default (state = initialState, action) => {
       return {
         ...state,
         userMessages: newState.userMessages
+      }
+    }
+    case SELECT_ALL_MAILS_IN_FOLDER: {
+      const messagesToSwitch = [...payload];
+      messagesToSwitch.map(mail => mail.isChecked = true);
+      const prevState = newState.userMessages;
+
+      const arraysToObject = {...messagesToSwitch, ...prevState}
+      const objectToArray = Object.values(arraysToObject);
+      return {
+        ...state,
+        userMessages: objectToArray
       }
     }
     default: {

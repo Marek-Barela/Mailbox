@@ -45,7 +45,7 @@ const Toolbar = ({ messages, changeMailsDirectoryToSpecificType }) => {
       <DisplayDropdownButton
         currentClass={button}
         buttonName="More"
-        dropdownElement={<MoreDropdown />}
+        dropdownElement={<MoreDropdown messages={messages} />}
       />
     </div>
   );
