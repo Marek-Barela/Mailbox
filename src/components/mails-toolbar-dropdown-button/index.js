@@ -2,8 +2,10 @@ import React, { useState, Fragment } from "react";
 import Icon from "../awesome-icon";
 import ToolbarOverlay from "../mails-toolbar-overlay";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import styles from "./index.module.css";
 
 const MoreDropdown = ({ currentClass, buttonName, dropdownElement }) => {
+  const { wrapper } = styles;
   const [switchDropdown, setSwitchDropdown] = useState(false);
 
   const handleMoveToButtonClick = () => {
@@ -21,7 +23,7 @@ const MoreDropdown = ({ currentClass, buttonName, dropdownElement }) => {
       {switchDropdown && (
         <ToolbarOverlay overlayClick={() => handleOverlayClick()} />
       )}
-      <div style={{ position: "relative", zIndex: indexLevel }}>
+      <div className={wrapper} style={{ zIndex: indexLevel }}>
         <button
           className={currentClass}
           onClick={() => handleMoveToButtonClick()}
