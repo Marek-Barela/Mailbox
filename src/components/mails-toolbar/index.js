@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 import { faTrashAlt, faBan } from "@fortawesome/free-solid-svg-icons";
 import styles from "./index.module.css";
 
-const Toolbar = ({changeMailsDirectoryToSpecificType}) => {
+const Toolbar = ({messages, changeMailsDirectoryToSpecificType}) => {
   const { toolbar, button } = styles;
 
   const handleSpamButtonCLick = () => {
@@ -18,12 +18,14 @@ const Toolbar = ({changeMailsDirectoryToSpecificType}) => {
     changeMailsDirectoryToSpecificType("trash")
   } 
 
+  const isAnyMailSelected = messages.some(mail => mail.isChecked === true);
+
   return (
     <div className={toolbar}>
-      <button className={button} onClick={() => handleSpamButtonCLick()}>
+      <button className={button} onClick={() => handleSpamButtonCLick()} disabled={!isAnyMailSelected}>
         <Icon icon={faBan} />
       </button>
-      <button className={button} onClick={() => handleTrashButtonCLick()}>
+      <button className={button} onClick={() => handleTrashButtonCLick()} disabled={!isAnyMailSelected}>
         <Icon icon={faTrashAlt} />
       </button>
       <MoveToButton currentClass={button} />

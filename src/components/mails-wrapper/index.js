@@ -44,7 +44,7 @@ const MailsContainer = ({ listOfMails, sortingType, sortingDirection,  sidebarIs
 
   return (
     <section className={containerStyling}>
-      <Toolbar />
+      <Toolbar messages={messages} />
       <MailsListContainer messages={messages} />
     </section>
   );
