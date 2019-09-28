@@ -1,12 +1,10 @@
 import React from "react";
 import Icon from "../awesome-icon";
+import MoveToButton from "../mails-toolbar-move-to";
+import MoreButton from "../mails-toolbar-more";
 import { changeMailsDirectoryToSpecificType } from "../../actions/toolbarActions";
 import { connect } from "react-redux";
-import {
-  faTrashAlt,
-  faBan,
-  faCaretDown
-} from "@fortawesome/free-solid-svg-icons";
+import { faTrashAlt, faBan } from "@fortawesome/free-solid-svg-icons";
 import styles from "./index.module.css";
 
 const Toolbar = ({changeMailsDirectoryToSpecificType}) => {
@@ -28,14 +26,8 @@ const Toolbar = ({changeMailsDirectoryToSpecificType}) => {
       <button className={button} onClick={() => handleTrashButtonCLick()}>
         <Icon icon={faTrashAlt} />
       </button>
-      <button className={button}>
-        Move To
-        <Icon icon={faCaretDown} />
-      </button>
-      <button className={button}>
-        More
-        <Icon icon={faCaretDown} />
-      </button>
+      <MoveToButton currentClass={button} />
+      <MoreButton currentClass={button} />
     </div>
   );
 };
