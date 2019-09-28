@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import { getMessageTypes } from "../../selectors/getMessageTypes";
 import getUserMessages from "../../selectors/getUserMessages";
 import { connect } from "react-redux";
+import createDashesBetweenWords from "../../utils/createDashesBetweenWords";
 
 const MailsContainer = ({ typesOfMessages, userMessages }) => {
   const { baseTypesOfMessages, userTypesOfMessages } = typesOfMessages;
@@ -19,8 +20,7 @@ const MailsContainer = ({ typesOfMessages, userMessages }) => {
     <Switch>
       {connectedTypesOfMessages.map((messageType, index) => {
         //Create additionals varables to set "exact" and root url "/" address properly
-        const createDashesBetweenWords = messageType.trim().split(" ").join("-");
-        messageType = createDashesBetweenWords;
+        messageType = createDashesBetweenWords(messageType);
         const isRootUrl = messageType === "Inbox" ? true : false;
         const getPath = messageType === "Inbox" ? "/" : "/" + messageType;
         const filtredMessages = userMessages.filter(message => {
