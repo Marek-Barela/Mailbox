@@ -6,7 +6,8 @@ import {
   CHANGE_MAILS_DIRECTORY_TO_SPECIFIC_TYPE,
   SELECT_ALL_MAILS_IN_FOLDER,
   SELECT_UNREAD_MESSAGES_IN_FOLDER,
-  SELECT_READED_MESSAGES_IN_FOLDER
+  SELECT_READED_MESSAGES_IN_FOLDER,
+  UNSELECT_ALL_MAILS_IN_FOLDER
 } from "../actions/types";
 
 const initialState = {
@@ -89,6 +90,16 @@ export default (state = initialState, action) => {
       const getMails =  selectReadedMails(messagesToSwitch);
       unselectMails(messagesToSwitch);
       selectMails(getMails);
+      const getConvertedArray = convertObjectsToArray(messagesToSwitch, prevState);
+      return {
+        ...state,
+        userMessages: getConvertedArray
+      }
+    }
+    case UNSELECT_ALL_MAILS_IN_FOLDER: {
+      const messagesToSwitch = [...payload];
+      const prevState = newState.userMessages;
+      unselectMails(messagesToSwitch);
       const getConvertedArray = convertObjectsToArray(messagesToSwitch, prevState);
       return {
         ...state,
