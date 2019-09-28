@@ -1,7 +1,8 @@
 import {
   CHANGE_MAILS_DIRECTORY_TO_SPECIFIC_TYPE,
   SELECT_ALL_MAILS_IN_FOLDER,
-  SELECT_UNREAD_MESSAGES_IN_FOLDER
+  SELECT_UNREAD_MESSAGES_IN_FOLDER,
+  SELECT_READED_MESSAGES_IN_FOLDER
 } from "./types";
 
 export const changeMailsDirectoryToSpecificType = payload => {
@@ -21,6 +22,13 @@ export const selectAllMailsInFolder = payload => {
 export const selectUnreadMessagesInFolder = payload => {
   return {
     type: SELECT_UNREAD_MESSAGES_IN_FOLDER,
+    payload
+  };
+};
+
+export const selectReadedMessagesInFolder = payload => {
+  return {
+    type: SELECT_READED_MESSAGES_IN_FOLDER,
     payload
   };
 };

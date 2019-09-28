@@ -3,13 +3,15 @@ import DropdownWrapper from "../mails-toolbar-dropdown-wrapper";
 import DropdownButtonItem from "../mails-toolbar-dropdown-button";
 import {
   selectAllMailsInFolder,
-  selectUnreadMessagesInFolder
+  selectUnreadMessagesInFolder,
+  selectReadedMessagesInFolder
 } from "../../actions/toolbarActions";
 import { connect } from "react-redux";
 
 const MoreDropdown = ({
   selectAllMailsInFolder,
   selectUnreadMessagesInFolder,
+  selectReadedMessagesInFolder,
   messages
 }) => {
   return (
@@ -22,13 +24,18 @@ const MoreDropdown = ({
         buttonName="Select unread"
         buttonClickAction={() => selectUnreadMessagesInFolder(messages)}
       />
+      <DropdownButtonItem
+        buttonName="Select readed"
+        buttonClickAction={() => selectReadedMessagesInFolder(messages)}
+      />
     </DropdownWrapper>
   );
 };
 
 const mapDispatchToProps = {
   selectAllMailsInFolder,
-  selectUnreadMessagesInFolder
+  selectUnreadMessagesInFolder,
+  selectReadedMessagesInFolder
 };
 
 export default connect(

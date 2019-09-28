@@ -5,7 +5,8 @@ import {
   SWITCH_ALL_MAILS_SELECTING,
   CHANGE_MAILS_DIRECTORY_TO_SPECIFIC_TYPE,
   SELECT_ALL_MAILS_IN_FOLDER,
-  SELECT_UNREAD_MESSAGES_IN_FOLDER
+  SELECT_UNREAD_MESSAGES_IN_FOLDER,
+  SELECT_READED_MESSAGES_IN_FOLDER
 } from "../actions/types";
 
 const initialState = {
@@ -25,9 +26,7 @@ export default (state = initialState, action) => {
     }
     case SWITCH_SINGLE_MAIL_CHECKBOX: {
       const { id, isChecked } = payload;
-      const findMessage = newState.userMessages.find(
-        message => message.id === id
-      );
+      const findMessage = findMailById(newState.userMessages, id);
       findMessage.isChecked = !isChecked;
       return {
         ...state,
@@ -36,10 +35,7 @@ export default (state = initialState, action) => {
     }
     case SWITCH_FAVORITE_MESSAGE: {
       const { id, isFavorite } = payload;
-      const findMessage = newState.userMessages.find(
-        message => message.id === id
-      );
-
+      const findMessage = findMailById(newState.userMessages, id);
       findMessage.isFavorite = !isFavorite;
       return {
         ...state,
@@ -49,22 +45,17 @@ export default (state = initialState, action) => {
     case SWITCH_ALL_MAILS_SELECTING: {
       const { isChecked, messagesToSwitch } = payload;
       const prevState = newState.userMessages;
-
-      messagesToSwitch.map(
-        message => message.isChecked = isChecked 
-      );
-
-      const arraysToObject = {...messagesToSwitch, ...prevState}
-      const objectToArray = Object.values(arraysToObject);
+      switchAllMailsSelecting(messagesToSwitch, isChecked);
+      const getConvertedArray = convertObjectsToArray(messagesToSwitch, prevState);
       return {
         ...state,
-        userMessages: objectToArray
+        userMessages: getConvertedArray
       }
     }
     case CHANGE_MAILS_DIRECTORY_TO_SPECIFIC_TYPE: {
-      const filtredArray = newState.userMessages.filter(mail => mail.isChecked === true);
-      filtredArray.map(mail => mail.typeOfMessage = payload);
-      filtredArray.map(mail => mail.isChecked = false )
+      const selectedMails = getSelectedMails(newState.userMessages);
+      asignNewTypeOfMail(selectedMails, payload);
+      unselectMails(selectedMails);
       return {
         ...state,
         userMessages: newState.userMessages
@@ -72,28 +63,36 @@ export default (state = initialState, action) => {
     }
     case SELECT_ALL_MAILS_IN_FOLDER: {
       const messagesToSwitch = [...payload];
-      messagesToSwitch.map(mail => mail.isChecked = true);
       const prevState = newState.userMessages;
-
-      const arraysToObject = {...messagesToSwitch, ...prevState}
-      const objectToArray = Object.values(arraysToObject);
+      selectMails(messagesToSwitch)
+      const getConvertedArray = convertObjectsToArray(messagesToSwitch, prevState);
       return {
         ...state,
-        userMessages: objectToArray
+        userMessages: getConvertedArray
       }
     }
     case SELECT_UNREAD_MESSAGES_IN_FOLDER: {
       const messagesToSwitch = [...payload];
-      messagesToSwitch
-        .filter(mail => mail.readed === false)
-        .map(mail => mail.isChecked = true);
       const prevState = newState.userMessages;
-      
-      const arraysToObject = {...messagesToSwitch, ...prevState}
-      const objectToArray = Object.values(arraysToObject);
+      const getMails = selectUnreadMails(messagesToSwitch);
+      unselectMails(messagesToSwitch);
+      selectMails(getMails);
+      const getConvertedArray = convertObjectsToArray(messagesToSwitch, prevState);
       return {
         ...state,
-        userMessages: objectToArray
+        userMessages: getConvertedArray
+      }
+    }
+    case SELECT_READED_MESSAGES_IN_FOLDER: {
+      const messagesToSwitch = [...payload];
+      const prevState = newState.userMessages;
+      const getMails =  selectReadedMails(messagesToSwitch);
+      unselectMails(messagesToSwitch);
+      selectMails(getMails);
+      const getConvertedArray = convertObjectsToArray(messagesToSwitch, prevState);
+      return {
+        ...state,
+        userMessages: getConvertedArray
       }
     }
     default: {
@@ -103,3 +102,21 @@ export default (state = initialState, action) => {
     }
   }
 };
+
+const convertObjectsToArray = (object1, object2) => {
+  const connectedObject = connectAndOverrideObjects(object1, object2)
+  return Object.values(connectedObject);
+}
+
+const connectAndOverrideObjects = (object1, object2) => {
+  return {...object1, ...object2}
+}
+
+const unselectMails = mails => mails.forEach(mail => mail.isChecked = false);
+const selectMails = mails => mails.forEach(mail => mail.isChecked = true);
+const selectReadedMails = mails => mails.filter(mail => mail.readed === true);
+const selectUnreadMails = mails => mails.filter(mail => mail.readed === false);
+const getSelectedMails = mails => mails.filter(mail => mail.isChecked === true);
+const asignNewTypeOfMail = (mails, type) => mails.forEach(mail => mail.typeOfMessage = type);
+const switchAllMailsSelecting = (mails, isChecked) => mails.forEach(mails => mails.isChecked = isChecked);
+const findMailById = (mails, id) => mails.find(message => message.id === id);
