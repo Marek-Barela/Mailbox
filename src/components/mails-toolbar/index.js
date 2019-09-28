@@ -1,41 +1,61 @@
 import React from "react";
 import Icon from "../awesome-icon";
-import MoveToButton from "../mails-toolbar-move-to";
-import MoreButton from "../mails-toolbar-more";
+import ToolbarDropdownButton from "../mails-toolbar-dropdown-button";
+import MoveToDropdown from "../mails-toolbar-dropdown-move-to";
+import MoreDropdown from "../mails-toolbar-dropdown-more";
 import { changeMailsDirectoryToSpecificType } from "../../actions/toolbarActions";
 import { connect } from "react-redux";
 import { faTrashAlt, faBan } from "@fortawesome/free-solid-svg-icons";
 import styles from "./index.module.css";
 
-const Toolbar = ({messages, changeMailsDirectoryToSpecificType}) => {
+const Toolbar = ({ messages, changeMailsDirectoryToSpecificType }) => {
   const { toolbar, button } = styles;
 
   const handleSpamButtonCLick = () => {
-    changeMailsDirectoryToSpecificType("spam")
-  }
+    changeMailsDirectoryToSpecificType("spam");
+  };
 
   const handleTrashButtonCLick = () => {
-    changeMailsDirectoryToSpecificType("trash")
-  } 
+    changeMailsDirectoryToSpecificType("trash");
+  };
 
   const isAnyMailSelected = messages.some(mail => mail.isChecked === true);
 
   return (
     <div className={toolbar}>
-      <button className={button} onClick={() => handleSpamButtonCLick()} disabled={!isAnyMailSelected}>
+      <button
+        className={button}
+        onClick={() => handleSpamButtonCLick()}
+        disabled={!isAnyMailSelected}
+      >
         <Icon icon={faBan} />
       </button>
-      <button className={button} onClick={() => handleTrashButtonCLick()} disabled={!isAnyMailSelected}>
+      <button
+        className={button}
+        onClick={() => handleTrashButtonCLick()}
+        disabled={!isAnyMailSelected}
+      >
         <Icon icon={faTrashAlt} />
       </button>
-      <MoveToButton currentClass={button} />
-      <MoreButton currentClass={button} />
+      <ToolbarDropdownButton
+        currentClass={button}
+        buttonName="Move To"
+        dropdownElement={<MoveToDropdown />}
+      />
+      <ToolbarDropdownButton
+        currentClass={button}
+        buttonName="More"
+        dropdownElement={<MoreDropdown />}
+      />
     </div>
   );
 };
 
 const mapDispatchToProps = {
   changeMailsDirectoryToSpecificType
-}
+};
 
-export default connect(null, mapDispatchToProps)(Toolbar);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Toolbar);

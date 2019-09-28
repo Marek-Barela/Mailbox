@@ -1,10 +1,9 @@
 import React, { useState, Fragment } from "react";
 import Icon from "../awesome-icon";
 import ToolbarOverlay from "../mails-toolbar-overlay";
-import MailsToolbarDropdown from "../mails-toolbar-dropdown";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
-const MoveToDropdown = ({ currentClass }) => {
+const MoreDropdown = ({ currentClass, buttonName, dropdownElement }) => {
   const [switchDropdown, setSwitchDropdown] = useState(false);
 
   const handleMoveToButtonClick = () => {
@@ -27,13 +26,13 @@ const MoveToDropdown = ({ currentClass }) => {
           className={currentClass}
           onClick={() => handleMoveToButtonClick()}
         >
-          Move To
+          {buttonName}
           <Icon icon={faCaretDown} />
         </button>
-        {switchDropdown && <MailsToolbarDropdown>heyyo</MailsToolbarDropdown>}
+        {switchDropdown && dropdownElement}
       </div>
     </Fragment>
   );
 };
 
-export default MoveToDropdown;
+export default MoreDropdown;
