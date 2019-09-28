@@ -1,14 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Icon from "../awesome-icon";
+import MailsToolbarDropdown from "../mails-toolbar-dropdown";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
-const index = ({ currentClass }) => {
+const MoveToDropdown = ({ currentClass }) => {
+  const [switchDropdown, setSwitchDropdown] = useState(true);
+
+  const handleMoveToButtonClick = () => {
+    setSwitchDropdown(!switchDropdown);
+  };
+
   return (
-    <button className={currentClass}>
-      Move To
-      <Icon icon={faCaretDown} />
-    </button>
+    <div style={{ position: "relative" }}>
+      <button
+        className={currentClass}
+        onClick={() => handleMoveToButtonClick()}
+      >
+        Move To
+        <Icon icon={faCaretDown} />
+      </button>
+      {switchDropdown && <MailsToolbarDropdown>heyyo</MailsToolbarDropdown>}
+    </div>
   );
 };
 
-export default index;
+export default MoveToDropdown;
