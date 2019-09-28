@@ -1,5 +1,7 @@
 import React from "react";
 import Icon from "../awesome-icon";
+import { changeMailsDirectoryToSpecificType } from "../../actions/toolbarActions";
+import { connect } from "react-redux";
 import {
   faTrashAlt,
   faBan,
@@ -7,11 +9,16 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./index.module.css";
 
-const Toolbar = () => {
+const Toolbar = ({changeMailsDirectoryToSpecificType}) => {
   const { toolbar, button } = styles;
+
+  const handleSpamButtonCLick = () => {
+    changeMailsDirectoryToSpecificType("spam")
+  } 
+
   return (
     <div className={toolbar}>
-      <button className={button}>
+      <button className={button} onClick={() => handleSpamButtonCLick()}>
         <Icon icon={faBan} />
       </button>
       <button className={button}>
@@ -29,4 +36,8 @@ const Toolbar = () => {
   );
 };
 
-export default Toolbar;
+const mapDispatchToProps = {
+  changeMailsDirectoryToSpecificType
+}
+
+export default connect(null, mapDispatchToProps)(Toolbar);

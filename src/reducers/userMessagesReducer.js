@@ -2,7 +2,8 @@ import {
   FETCH_USER_DATA,
   SWITCH_SINGLE_MAIL_CHECKBOX,
   SWITCH_FAVORITE_MESSAGE,
-  SWITCH_ALL_MAILS_SELECTING
+  SWITCH_ALL_MAILS_SELECTING,
+  CHANGE_MAILS_DIRECTORY_TO_SPECIFIC_TYPE
 } from "../actions/types";
 
 const initialState = {
@@ -56,6 +57,15 @@ export default (state = initialState, action) => {
       return {
         ...state,
         userMessages: objectToArray
+      }
+    }
+    case CHANGE_MAILS_DIRECTORY_TO_SPECIFIC_TYPE: {
+      const filtredArray = newState.userMessages.filter(mail => mail.isChecked === true);
+      filtredArray.map(mail => mail.typeOfMessage = payload);
+      filtredArray.map(mail => mail.isChecked = false )
+      return {
+        ...state,
+        userMessages: newState.userMessages
       }
     }
     default: {

@@ -9,7 +9,7 @@ import { getMenuState } from "../../selectors/getMenuState";
 import { connect } from "react-redux";
 import styles from "./index.module.css";
 
-const MailsContainer = ({ listOfMails, sortingType, sortingDirection, sidebarIsVisible }) => {
+const MailsContainer = ({ listOfMails, sortingType, sortingDirection,  sidebarIsVisible }) => {
   const { container, containerWithMargin } = styles;
   const [messages, setMessages] = useState([]);
 
@@ -44,7 +44,7 @@ const MailsContainer = ({ listOfMails, sortingType, sortingDirection, sidebarIsV
 
   return (
     <section className={containerStyling}>
-      <Toolbar messages={messages} />
+      <Toolbar />
       <MailsListContainer messages={messages} />
     </section>
   );

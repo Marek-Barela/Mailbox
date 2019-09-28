@@ -23,7 +23,7 @@ const MailsContainer = ({ typesOfMessages, userMessages }) => {
         messageType = createDashesBetweenWords;
         const isRootUrl = messageType === "Inbox" ? true : false;
         const getPath = messageType === "Inbox" ? "/" : "/" + messageType;
-        const filterMessages = userMessages.filter(message => {
+        const filtredMessages = userMessages.filter(message => {
           return message.typeOfMessage === messageType.toLowerCase();
         });
         return (
@@ -31,7 +31,7 @@ const MailsContainer = ({ typesOfMessages, userMessages }) => {
             key={index}
             path={getPath}
             exact={isRootUrl}
-            component={() => <MailsWrapper listOfMails={filterMessages} />} // Fill mail wrapper with specific type of message
+            component={() => <MailsWrapper listOfMails={filtredMessages} />} // Fill mail wrapper with specific type of message
           />
         );
       })}
