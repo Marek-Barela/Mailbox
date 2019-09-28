@@ -14,6 +14,10 @@ const Toolbar = ({changeMailsDirectoryToSpecificType}) => {
 
   const handleSpamButtonCLick = () => {
     changeMailsDirectoryToSpecificType("spam")
+  }
+
+  const handleTrashButtonCLick = () => {
+    changeMailsDirectoryToSpecificType("trash")
   } 
 
   return (
@@ -21,7 +25,7 @@ const Toolbar = ({changeMailsDirectoryToSpecificType}) => {
       <button className={button} onClick={() => handleSpamButtonCLick()}>
         <Icon icon={faBan} />
       </button>
-      <button className={button}>
+      <button className={button} onClick={() => handleTrashButtonCLick()}>
         <Icon icon={faTrashAlt} />
       </button>
       <button className={button}>
