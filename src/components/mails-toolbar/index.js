@@ -1,6 +1,6 @@
 import React from "react";
 import Icon from "../awesome-icon";
-import ToolbarDropdownButton from "../mails-toolbar-dropdown-button";
+import DisplayDropdownButton from "../mails-toolbar-display-dropdown-button";
 import MoveToDropdown from "../mails-toolbar-dropdown-move-to";
 import MoreDropdown from "../mails-toolbar-dropdown-more";
 import { changeMailsDirectoryToSpecificType } from "../../actions/toolbarActions";
@@ -37,12 +37,12 @@ const Toolbar = ({ messages, changeMailsDirectoryToSpecificType }) => {
       >
         <Icon icon={faTrashAlt} />
       </button>
-      <ToolbarDropdownButton
+      <DisplayDropdownButton
         currentClass={button}
         buttonName="Move To"
         dropdownElement={<MoveToDropdown />}
       />
-      <ToolbarDropdownButton
+      <DisplayDropdownButton
         currentClass={button}
         buttonName="More"
         dropdownElement={<MoreDropdown />}

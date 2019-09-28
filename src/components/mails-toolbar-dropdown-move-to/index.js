@@ -1,27 +1,29 @@
 import React from "react";
 import DropdownWrapper from "../mails-toolbar-dropdown-wrapper";
+import DropdownButtonItem from "../mails-toolbar-dropdown-button";
 import { getBaseMessageTypes, getUserMessageTypes } from "../../selectors/getMessageTypes";
 import { changeMailsDirectoryToSpecificType } from "../../actions/toolbarActions";
 import createDashesBetweenWords from "../../utils/createDashesBetweenWords";
 import { connect } from "react-redux";
-import styles from './index.module.css';
 
-const MoveToDropdown = ({ baseMessageTypes, userMessageTypes, changeMailsDirectoryToSpecificType }) => {
-  const { button } = styles;
+const MoveToDropdown = ({
+  baseMessageTypes,
+  userMessageTypes,
+  changeMailsDirectoryToSpecificType
+}) => {
   const connectedTypesOfMessages = [...baseMessageTypes, ...userMessageTypes];
-  const handleChangeDirectoryButton = type => changeMailsDirectoryToSpecificType(type);
   return (
     <DropdownWrapper>
       {connectedTypesOfMessages.map((typeOfMessage, index) => {
         const convertedTypeOfMessage = createDashesBetweenWords(typeOfMessage).toLowerCase();
         return (
-          <button
+          <DropdownButtonItem
             key={index}
-            onClick={() => handleChangeDirectoryButton(convertedTypeOfMessage)}
-            className={button}
-          >
-            {typeOfMessage}
-          </button>
+            buttonName={typeOfMessage}
+            buttonClickAction={() =>
+              changeMailsDirectoryToSpecificType(convertedTypeOfMessage)
+            }
+          />
         );
       })}
     </DropdownWrapper>
@@ -35,7 +37,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   changeMailsDirectoryToSpecificType
-}
+};
 
 export default connect(
   mapStateToProps,

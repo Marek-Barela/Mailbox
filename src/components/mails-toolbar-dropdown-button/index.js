@@ -1,40 +1,21 @@
-import React, { useState, Fragment } from "react";
-import Icon from "../awesome-icon";
-import ToolbarOverlay from "../mails-toolbar-overlay";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import styles from "./index.module.css";
+import React from 'react'
+import styles from './index.module.css';
 
-const MoreDropdown = ({ currentClass, buttonName, dropdownElement }) => {
-  const { wrapper } = styles;
-  const [switchDropdown, setSwitchDropdown] = useState(false);
+const DropdownButtonItem = ({buttonName, buttonClickAction}) => {
+  const { button } = styles;
 
-  const handleMoveToButtonClick = () => {
-    setSwitchDropdown(!switchDropdown);
-  };
-
-  const handleOverlayClick = () => {
-    setSwitchDropdown(!switchDropdown);
-  };
-
-  const indexLevel = switchDropdown ? 100 : 0;
-
+  const handleButtonClick = () => {
+    buttonClickAction()
+  }
+  
   return (
-    <Fragment>
-      {switchDropdown && (
-        <ToolbarOverlay overlayClick={() => handleOverlayClick()} />
-      )}
-      <div className={wrapper} style={{ zIndex: indexLevel }}>
-        <button
-          className={currentClass}
-          onClick={() => handleMoveToButtonClick()}
-        >
-          {buttonName}
-          <Icon icon={faCaretDown} />
-        </button>
-        {switchDropdown && dropdownElement}
-      </div>
-    </Fragment>
-  );
-};
+    <button
+      onClick={() => handleButtonClick()}
+      className={button}
+    >
+      {buttonName}
+    </button>
+  )
+}
 
-export default MoreDropdown;
+export default DropdownButtonItem
