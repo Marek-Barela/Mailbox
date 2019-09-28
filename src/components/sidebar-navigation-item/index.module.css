@@ -16,7 +16,7 @@
 }
 
 .sidebarActive {
-  background-color: #333333;
+  background-color: #24292e;
   font-weight: 800;
 }
 
@@ -26,5 +26,5 @@
 
 .sidebarActive:hover {
   color: #ffffff;
-  background-color: #333333;
+  background-color: #24292e;
 }
