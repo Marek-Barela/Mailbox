@@ -1,3 +1,5 @@
+![alt text](https://raw.githubusercontent.com/Marek-Barela/Mailbox/master/src/images/mailbox.png)
+
 # Mailbox
 
 Complex cliend side functionality of email application.
