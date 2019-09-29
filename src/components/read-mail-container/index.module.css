@@ -12,14 +12,15 @@
 
 .messageTitle {
   font-size: 1em;
-  font-weight: 400;
-  margin-bottom: 40px;
+  font-weight: 800;
+  margin-bottom: 30px;
 }
 
 .emailAdressWrapper {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 .emailAdressLabel {
