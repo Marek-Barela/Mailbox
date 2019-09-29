@@ -7,7 +7,8 @@ import {
   SELECT_ALL_MAILS_IN_FOLDER,
   SELECT_UNREAD_MESSAGES_IN_FOLDER,
   SELECT_READED_MESSAGES_IN_FOLDER,
-  UNSELECT_ALL_MAILS_IN_FOLDER
+  UNSELECT_ALL_MAILS_IN_FOLDER,
+  UNSELECT_MAILS
 } from "../actions/types";
 
 const initialState = {
@@ -104,6 +105,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         userMessages: getConvertedArray
+      }
+    }
+    case UNSELECT_MAILS: {
+      unselectMails(newState.userMessages)
+      return {
+        ...state,
+        userMessages: newState.userMessages
       }
     }
     default: {
