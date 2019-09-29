@@ -15,8 +15,9 @@ const ListSortingBar = ({ messages, switchAllMailsSelecting }) => {
     switchAllMailsSelecting(e.target.checked, messages);
   };
 
-  const activeCheckboxColor = checkIfAllMessagesAreSelected && "#860101";
-
+  const isDisabled = messages.length === 0 ? false : checkIfAllMessagesAreSelected;
+  const activeCheckboxColor = isDisabled && "#860101";
+  
   return (
     <div className={sortingBar}>
       <div
@@ -25,7 +26,7 @@ const ListSortingBar = ({ messages, switchAllMailsSelecting }) => {
       >
         <input
           type="checkbox"
-          checked={checkIfAllMessagesAreSelected}
+          checked={isDisabled}
           onChange={e => handleSwitchAllMessages(e)}
           style={{ borderBottomColor: activeCheckboxColor }}
         />
