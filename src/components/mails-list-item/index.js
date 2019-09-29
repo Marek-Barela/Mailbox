@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import Icon from "../awesome-icon";
+import { Redirect } from "react-router-dom";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as faStarFilled } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -34,6 +35,7 @@ const MailsListItem = ({
     subjectWrapper,
     messageDate
   } = styles;
+  const [redirect, setRedirect] = useState(false);
   const fontThickness = readed ? "400" : "800";
 
   const handleCheckboxChange = (isChecked, id) => {
@@ -46,8 +48,13 @@ const MailsListItem = ({
 
   const mailClassName = `${listElement} ${isChecked ? listElementActive : ""}`;
 
+  const handleMessageClick = () => {
+    setRedirect(true)
+  }
+
   return (
-    <article className={mailClassName}>
+    <article className={mailClassName} onClick={() => handleMessageClick()}>
+      {redirect && <Redirect to={{ pathname: "/read-message", state: message }} />}
       <div className={checkbox}>
         <input
           type="checkbox"

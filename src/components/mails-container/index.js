@@ -1,5 +1,6 @@
 import React from "react";
 import MailsWrapper from "../mails-wrapper";
+import ReadMailContainer from "../read-mail-container";
 import NotFound from "../404";
 import { Route, Switch } from "react-router-dom";
 import { getMessageTypes } from "../../selectors/getMessageTypes";
@@ -39,6 +40,7 @@ const MailsContainer = ({ typesOfMessages, userMessages }) => {
           />
         );
       })}
+      <Route path="/read-message" component={(props) => <ReadMailContainer {...props}/>} />
       <Route component={() => <NotFound />} />
     </Switch>
   );
