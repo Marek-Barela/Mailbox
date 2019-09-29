@@ -1,0 +1,52 @@
+.container {
+  width: 100%;
+  padding-left: 10px;
+}
+
+.details,
+.content {
+  background-color: #e0e0e0;
+  margin-bottom: 15px;
+  padding: 20px;
+}
+
+.messageTitle {
+  font-size: 1em;
+  font-weight: 400;
+  margin-bottom: 40px;
+}
+
+.emailAdressWrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.emailAdressLabel {
+  font-size: 0.7em;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+  padding: 3px 6px;
+  margin-right: 10px;
+}
+
+.emailAdressText {
+  font-size: 0.6em;
+  margin-right: 20px;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  background-color: #ffffff;
+  border: 10px solid rgba(0, 0, 0, 0.3);
+}
+
+.messageText {
+  font-size: 0.8em;
+  width: 80%;
+  line-height: 20px;
+}
