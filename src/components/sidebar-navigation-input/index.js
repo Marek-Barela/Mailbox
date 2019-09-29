@@ -57,6 +57,7 @@ const SidebarNavigationInput = ({ createNewUserFolder, messageTypes }) => {
       setInputWarning(false);
       setWarningMessage("");
       createNewUserFolder(inputValue.trim());
+      setInputValue("");
     } else {
       setInputWarning(true);
     }
