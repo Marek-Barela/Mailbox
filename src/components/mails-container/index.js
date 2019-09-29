@@ -26,12 +26,16 @@ const MailsContainer = ({ typesOfMessages, userMessages }) => {
         const filtredMessages = userMessages.filter(message => {
           return message.typeOfMessage === messageType.toLowerCase();
         });
+        const options = {
+          listOfMails: filtredMessages,
+          messageType
+        }
         return (
           <Route
             key={index}
             path={getPath}
             exact={isRootUrl}
-            component={() => <MailsWrapper listOfMails={filtredMessages} />} // Fill mail wrapper with specific type of message
+            component={() => <MailsWrapper {...options} />} // Fill mail wrapper with specific type of message
           />
         );
       })}

@@ -9,14 +9,19 @@ import { connect } from "react-redux";
 const MoveToDropdown = ({
   baseMessageTypes,
   userMessageTypes,
-  changeMailsDirectoryToSpecificType
+  changeMailsDirectoryToSpecificType,
+  typeOfFolder
 }) => {
   const connectedTypesOfMessages = [...baseMessageTypes, ...userMessageTypes];
   return (
     <DropdownWrapper>
       {connectedTypesOfMessages.map((typeOfMessage, index) => {
         const convertedTypeOfMessage = createDashesBetweenWords(typeOfMessage).toLowerCase();
-        return (
+        /**
+         *  Don't render button if user is in exact same route as folder
+         *  example: Don't render social button if user is in social route
+        */
+        const dropdownButton = typeOfFolder !== convertedTypeOfMessage && (
           <DropdownButtonItem
             key={index}
             buttonName={typeOfMessage}
@@ -25,6 +30,7 @@ const MoveToDropdown = ({
             }
           />
         );
+        return dropdownButton
       })}
     </DropdownWrapper>
   );

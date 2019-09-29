@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { faTrashAlt, faBan } from "@fortawesome/free-solid-svg-icons";
 import styles from "./index.module.css";
 
-const Toolbar = ({ messages, changeMailsDirectoryToSpecificType }) => {
+const Toolbar = ({ messages, messageType, changeMailsDirectoryToSpecificType }) => {
   const { toolbar, button } = styles;
 
   const handleSpamButtonCLick = () => {
@@ -20,28 +20,33 @@ const Toolbar = ({ messages, changeMailsDirectoryToSpecificType }) => {
   };
 
   const isAnyMailSelected = messages.some(mail => mail.isChecked === true);
-
+  const typeOfFolder = messageType.toLowerCase()
   return (
     <div className={toolbar}>
-      <button
-        className={button}
-        onClick={() => handleSpamButtonCLick()}
-        disabled={!isAnyMailSelected}
-      >
-        <Icon icon={faBan} />
-      </button>
-      <button
-        className={button}
-        onClick={() => handleTrashButtonCLick()}
-        disabled={!isAnyMailSelected}
-      >
-        <Icon icon={faTrashAlt} />
-      </button>
+      {typeOfFolder !== "spam" && ( 
+        <button
+          className={button}
+          onClick={() => handleSpamButtonCLick()}
+          disabled={!isAnyMailSelected}
+        >
+          <Icon icon={faBan} />
+        </button>
+      )}
+      {typeOfFolder !== "trash" && ( 
+        <button
+          className={button}
+          onClick={() => handleTrashButtonCLick()}
+          disabled={!isAnyMailSelected}
+        >
+          <Icon icon={faTrashAlt} />
+        </button>
+      )}
       <DisplayDropdownButton
         currentClass={button}
         buttonName="Move To"
-        dropdownElement={<MoveToDropdown />}
+        dropdownElement={<MoveToDropdown typeOfFolder={typeOfFolder} />}
         isDisabled={!isAnyMailSelected}
+        typeOfFolder={typeOfFolder}
       />
       <DisplayDropdownButton
         currentClass={button}
