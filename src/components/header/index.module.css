@@ -1,0 +1,43 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  border-bottom: 1px solid #333333;
+  background-color: #24292e;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  color: #5fd5f6;
+  margin-left: 130px;
+}
+
+.logo svg {
+  font-size: 1.8em;
+}
+
+.logo h1 {
+  font-size: 1.2em;
+  margin: 0 0 0 10px;
+  font-weight: 400;
+}
+
+.menuButton {
+  color: #ffffff;
+  font-size: 0.8em;
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  left: 30px;
+  border: 0;
+  border-radius: 100%;
+  background-color: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.menuButton:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}

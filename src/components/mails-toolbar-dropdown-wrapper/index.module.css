@@ -1,0 +1,9 @@
+.dropdown {
+  position: absolute;
+  background-color: #ffffff;
+  padding: 5px 10px;
+  left: 5px;
+  bottom: 0;
+  border: 10px solid #24292e;
+  transform: translateY(105%);
+}

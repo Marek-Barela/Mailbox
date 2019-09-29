@@ -1,0 +1,40 @@
+.inputFolderWrapper {
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputWrapper {
+  position: relative;
+  max-width: 100%;
+  margin: 10px 0;
+}
+
+.input {
+  font-size: 0.55em;
+  width: 100%;
+  height: 36px;
+  padding: 5px 8px;
+  margin: 8px 10px 5px 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.inputFolderWrapper svg {
+  font-size: 1.3em;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.inputFolderWrapper svg:hover {
+  color: #a80303;
+}
+
+.warning {
+  position: absolute;
+  color: #a80303;
+  top: -7px;
+  left: 8px;
+  font-size: 0.55em;
+}

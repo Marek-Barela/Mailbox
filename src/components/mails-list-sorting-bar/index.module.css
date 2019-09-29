@@ -1,0 +1,58 @@
+.sortingBar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  font-size: 0.65em;
+}
+
+.checkbox,
+.favorite,
+.author,
+.subject,
+.date {
+  height: 30px;
+  display: flex;
+  align-items: center;
+  margin: 0 3px;
+  border-bottom: 2px solid #e0e0e0;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.favorite svg,
+.author svg,
+.subject svg,
+.date svg {
+  margin-left: 5px;
+}
+
+.checkbox:hover,
+.favorite:hover,
+.author:hover,
+.subject:hover,
+.date:hover {
+  border-bottom: 2px solid #a80303;
+}
+
+.checkbox,
+.favorite {
+  width: 3%;
+  justify-content: center;
+}
+
+.favorite {
+  width: 5%;
+  justify-content: center;
+}
+
+.author {
+  width: 20%;
+}
+
+.subject {
+  width: 58%;
+}
+
+.date {
+  width: 14%;
+}
