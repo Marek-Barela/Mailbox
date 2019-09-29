@@ -7,7 +7,7 @@ const NotFound = () => {
     justifyContent: "center",
     alignItems: "center",
     minHeight: "350px",
-    userSelect: "none",
+    userSelect: "none"
   };
   const header = {
     fontSize: "4em"

@@ -45,11 +45,23 @@ const SidebarNavigationInput = ({ createNewUserFolder, messageTypes }) => {
     } else return false;
   };
 
+  const checkIfNameHaveIllegalCharacters = () => {
+    const input = inputValue.trim();
+    const regExp =  /[^A-Za-z0-9]+/g;
+    const result = regExp.test(input);
+    if(result) {
+      setInputWarning(true);
+      setWarningMessage("You can't use illegal marks");
+      return true
+    } else return false 
+  } 
+
   const handleSaveClick = () => {
     const errors = {};
     errors.isEmpty = checkIfNameIsEmpty();
     errors.isRepeated = checkIfNameIsRepeated();
-    !errors.isEmpty && !errors.isRepeated && createFolder();
+    errors.isIllegal = checkIfNameHaveIllegalCharacters()
+    !errors.isEmpty && !errors.isRepeated && !errors.isIllegal && createFolder();
   };
 
   const createFolder = () => {
