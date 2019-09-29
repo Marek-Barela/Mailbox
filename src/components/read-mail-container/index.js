@@ -1,15 +1,24 @@
 import React from "react";
 import Page404 from "../404";
+import { Redirect } from "react-router-dom";
+import { getUserMessagesLoadingState } from "../../selectors/getUserMessages";
+import { selectMessageAsReaded } from "../../actions/mailsActions";
+import { connect } from "react-redux";
 import styles from "./index.module.css";
 
-const ReadMailContainer = props => {
-  const currentState = props.location.state;
-  let author, subject, email, messageContent;
+const ReadMailContainer = ({location, selectMessageAsReaded, messagesAreLoading}) => {
+  const currentState = location.state;
+  let id, author, subject, email, messageContent, readed;
   if (currentState !== undefined) {
+    id = currentState.id;
     author = currentState.author;
     subject = currentState.subject;
     email = currentState.email;
     messageContent = currentState.messageContent;
+    readed = currentState.readed;
+  }
+  if (!readed && !messagesAreLoading && id !== undefined) {
+    selectMessageAsReaded(id)  
   }
   const {
     container,
@@ -23,6 +32,7 @@ const ReadMailContainer = props => {
   } = styles;
   return currentState !== undefined ? (
     <div className={container}>
+      {messagesAreLoading && <Redirect to="/" />}
       <div className={details}>
         <h2 className={messageTitle}>{subject}</h2>
         <div className={emailAdressWrapper}>
@@ -47,4 +57,12 @@ const ReadMailContainer = props => {
   );
 };
 
-export default ReadMailContainer;
+const mapStateToProps = state => ({
+  messagesAreLoading: getUserMessagesLoadingState(state)
+})
+
+const mapDispatchToProps = {
+  selectMessageAsReaded
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ReadMailContainer);

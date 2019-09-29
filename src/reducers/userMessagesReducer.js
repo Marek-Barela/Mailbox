@@ -8,11 +8,13 @@ import {
   SELECT_UNREAD_MESSAGES_IN_FOLDER,
   SELECT_READED_MESSAGES_IN_FOLDER,
   UNSELECT_ALL_MAILS_IN_FOLDER,
-  UNSELECT_MAILS
+  UNSELECT_MAILS,
+  SELECT_MESSAGE_AS_READED
 } from "../actions/types";
 
 const initialState = {
-  userMessages: []
+  userMessages: [],
+  isLoading: true
 };
 
 export default (state = initialState, action) => {
@@ -23,7 +25,8 @@ export default (state = initialState, action) => {
     case FETCH_USER_DATA: {
       return {
         ...state,
-        userMessages: payload
+        userMessages: payload,
+        isLoading: false
       };
     }
     case SWITCH_SINGLE_MAIL_CHECKBOX: {
@@ -43,6 +46,16 @@ export default (state = initialState, action) => {
         ...state,
         userMessages: newState.userMessages
       };
+    }
+    case SELECT_MESSAGE_AS_READED: {
+      const findMessage = findMailById(newState.userMessages, payload);
+      if(findMessage !== undefined) {
+        findMessage.readed = true;
+      }
+      return {
+        ...state,
+        userMessages: newState.userMessages
+      }
     }
     case SWITCH_ALL_MAILS_SELECTING: {
       const { isChecked, messagesToSwitch } = payload;
