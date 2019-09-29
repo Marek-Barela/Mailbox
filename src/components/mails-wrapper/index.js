@@ -5,18 +5,16 @@ import {
   getSortingType,
   getSortingDirection
 } from "../../selectors/getSortingType";
-import { getMenuState } from "../../selectors/getMenuState";
 import { connect } from "react-redux";
 import styles from "./index.module.css";
 
 const MailsContainer = ({ 
   listOfMails, 
   sortingType, 
-  sortingDirection,  
-  sidebarIsVisible, 
+  sortingDirection,
   messageType 
 }) => {
-  const { container, containerWithMargin } = styles;
+  const { container } = styles;
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -46,10 +44,8 @@ const MailsContainer = ({
     }
   };
 
-  const containerStyling = `${containerWithMargin} ${!sidebarIsVisible && container}`
-
   return (
-    <section className={containerStyling}>
+    <section className={container}>
       <Toolbar messages={messages} messageType={messageType} />
       <MailsListContainer messages={messages} />
     </section>
@@ -58,8 +54,7 @@ const MailsContainer = ({
 
 const mapStateToProps = state => ({
   sortingType: getSortingType(state),
-  sortingDirection: getSortingDirection(state),
-  sidebarIsVisible: getMenuState(state)
+  sortingDirection: getSortingDirection(state)
 });
 
 export default connect(

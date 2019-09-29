@@ -1,6 +1,6 @@
 .sidebar {
-  position: absolute;
-  width: 230px;
+  position: relative;
+  width: 270px;
   transition: transform 0.3s;
   height: 100%;
   background-color: #ffffff;
@@ -8,6 +8,7 @@
 }
 
 .sidebarHidden {
+  position: absolute;
   transform: translateX(-105%);
 }
 
@@ -46,4 +47,10 @@
 .folderText {
   font-weight: bold;
   letter-spacing: 2px;
+}
+
+@media (max-width: 850px) {
+  .sidebar {
+    position: absolute;
+  }
 }
