@@ -17,7 +17,6 @@ const SidebarItem = ({ typeOfMessage, unselectMails, resetSortingBar, location }
   const currentPathLocation = location.pathname === "/" ? "/" : location.pathname.slice(1);
   const handleRouteChangeClick = () => {
     if(currentPathLocation !== setUrl) {
-      console.log("work")
       unselectMails()
       resetSortingBar()
     }
