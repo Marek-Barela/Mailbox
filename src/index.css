@@ -29,6 +29,7 @@ body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
   color: #666666;
+  min-width: 550px;
 }
 
 /**
