@@ -1,7 +1,10 @@
 import { SWITCH_MENU_SIDEBAR_VISIBILITY } from "../actions/types";
 
+const MINIMAL_RESOLUTION = 800;
+const isMobileResolution = window.innerWidth > MINIMAL_RESOLUTION ? true : false;
+
 const initialState = {
-  menuSidebarIsVisible: true
+  menuSidebarIsVisible: isMobileResolution
 };
 
 export default (state = initialState, action) => {
