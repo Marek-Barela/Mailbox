@@ -1,0 +1,20 @@
+.containerMargin {
+  width: 100%;
+  padding-left: 10px;
+  margin-left: 0px;
+  transition: margin-left 0.4s;
+}
+
+.containerNoMargin {
+  margin-left: 0px;
+}
+
+@media (min-width: 800px) {
+  .containerMargin {
+    margin-left: 240px;
+  }
+
+  .containerNoMargin {
+    margin-left: 0px;
+  }
+}

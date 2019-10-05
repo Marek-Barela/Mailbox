@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Toolbar from "../mails-toolbar";
 import MailsListContainer from "../mails-list-container";
 import {
@@ -6,7 +6,6 @@ import {
   getSortingDirection
 } from "../../selectors/getSortingType";
 import { connect } from "react-redux";
-import styles from "./index.module.css";
 
 const MailsContainer = ({ 
   listOfMails, 
@@ -14,7 +13,6 @@ const MailsContainer = ({
   sortingDirection,
   messageType 
 }) => {
-  const { container } = styles;
   const [messages, setMessages] = useState([]);
 
   useEffect(() => {
@@ -45,10 +43,10 @@ const MailsContainer = ({
   };
 
   return (
-    <section className={container}>
+    <Fragment>
       <Toolbar messages={messages} messageType={messageType} />
       <MailsListContainer messages={messages} />
-    </section>
+    </Fragment>
   );
 };
 
